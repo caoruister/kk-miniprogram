@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="page__hd">
+    <image class="weui-grid__icon" style="height:80px;width:80px" src="/assets/images/login.png" />
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <form>
+      <view>
+        <view class="weui-cell">
+          <view>
+            <image class="weui-grid__icon" src="/assets/images/mobile.png" />
+          </view>
+          <view class="vertical-line"></view>
+          <view class="weui-cell__bd">
+            <input class="input" id="username" name="username" placeholder="请输入用户名" placeholder-class="input-placeholder" bindinput="bindUsername" data-name='username' value='{{username}}' />
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view>
+            <image class="weui-grid__icon" src="/assets/images/password.png" />
+          </view>
+          <view class="vertical-line"></view>
+          <view class="weui-cell__bd">
+            <input class="input" id="password" name="password" type="number" placeholder="请输入密码" placeholder-class="input-placeholder" password="true" bindinput="bindPassword" data-name='password' value='{{password}}' />
+          </view>
+        </view>
+      </view>
+
+      <button formType="submit" class="weui-btn" type="primary" bindtap="login">登 录</button>
+
+    </form>
+  </view>
+</view>

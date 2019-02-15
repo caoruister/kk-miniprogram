@@ -1,0 +1,16 @@
+<template name="topItems">
+  <view class="weui-panel">
+    <view class="weui-panel__hd" wx:if="{{!hideSectionTitle}}">{{sectionTitle || '应用'}}</view>
+    <view class="weui-panel__bd">
+      <view class="weui-grids" style="border-top: none">
+        <block wx:for="{{items}}" wx:key="item.path">
+          <navigator url="{{item.path}}" class="weui-grid" hover-class="weui-grid_active" style="border-right:0px;border-bottom:0px;">
+            <image class="weui-grid__icon" src="{{item.icon}}" />
+            <view class="weui-grid__label">{{item.label}}</view>
+          </navigator>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="bottom-gap" style="{{style}}"></view>
+</template>

@@ -1,0 +1,18 @@
+<template name="swiper">
+  <view class="weui-panel">
+    <view class="weui-panel__hd" wx:if="{{!hideSectionTitle}}">{{sectionTitle || '轮播图'}}</view>
+    <view class="weui-panel__bd" style="text-align:center;padding: 20rpx 0">
+
+      <swiper indicator-dots="true" autoplay="true" interval="2000" duration="500">
+        <block wx:for="{{items}}" wx:key="*this">
+          <swiper-item>
+            <navigator url="{{item.path}}?weburl={{item.webviewUrl}}">
+              <image class="swiper-item" mode="scaleToFill" src="{{item.imageUrl}}"></image>
+            </navigator>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <view class="bottom-gap" style="{{style}}"></view>
+</template>

@@ -1,0 +1,7 @@
+<template name="button">
+  <view class="weui-btn-area">
+    <button class="weui-btn mini-btn" type="primary" size="mini" data-method-name="add1" catchtap="add">新增</button>
+    <button class="weui-btn mini-btn" type="primary" size="mini" data-method-name="add2" catchtap="add">修改</button>
+    <button class="weui-btn mini-btn" type="primary" size="mini" data-method-name="add3" catchtap="add">删除</button>
+  </view>
+</template>

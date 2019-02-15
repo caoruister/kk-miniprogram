@@ -1,0 +1,15 @@
+<template name="messages">
+  <view class="weui-panel">
+    <view class="weui-panel__hd" wx:if="{{!hideSectionTitle}}">{{sectionTitle || '消息'}}</view>
+    <view class="weui-panel__bd">
+      <block wx:for="{{items}}" wx:key="item.path">
+        <navigator url="{{item.path}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">
+            {{item.subject}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+  <view class="bottom-gap" style="{{style}}"></view>
+</template>

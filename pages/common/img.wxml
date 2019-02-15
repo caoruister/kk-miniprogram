@@ -1,0 +1,13 @@
+<template name="images">
+  <view class="weui-panel">
+    <view class="weui-panel__hd" wx:if="{{!hideSectionTitle}}">{{sectionTitle || '图片'}}</view>
+    <view class="weui-panel__bd" style="text-align:center;padding:20rpx 0;">
+      <block wx:for="{{items}}" wx:key="item.path">
+       <navigator url="{{item.path}}">
+        <image mode="scaleToFill" src="{{item.imageUrl}}" style="{{item.style}}"></image>
+        </navigator>
+      </block>
+    </view>
+  </view>
+  <view class="bottom-gap" style="{{style}}"></view>
+</template>

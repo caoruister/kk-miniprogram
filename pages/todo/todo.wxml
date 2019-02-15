@@ -1,0 +1,9 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">待开发......</view>
+    <view class="page__desc"></view>
+  </view>
+  <view class="page__bd">
+    
+  </view>
+</view>

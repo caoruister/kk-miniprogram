@@ -1,0 +1,22 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="bottom-gap"></view>
+
+    <scroll-view scroll-y="true" scroll-with-animation="true">
+      <block wx:for="{{dataArray}}" wx:for-item="records" wx:key="*this" wx:for-index="dataArrayIndex">
+        <block wx:for="{{records}}" wx:for-item="record" wx:key="{{record.id}}" wx:for-index="index">
+          <navigator class="weui-form-pre" data-id="{{record.id}}" bindtap="selectItem" open-type="navigateBack" delta="1">
+            <view class="weui-form-preview__bd">
+              <view class="weui-form-preview__item" wx:for="{{showedFields}}" wx:for-item="field" wx:key="*this">
+                <view class="weui-form-preview__label">{{field.label}}:</view>
+                <view class="weui-form-preview__value">
+                  <text decode="true">{{record[field.name] || ' '}}&nbsp;</text>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </block>
+      </block>
+    </scroll-view>
+  </view>
+</view>

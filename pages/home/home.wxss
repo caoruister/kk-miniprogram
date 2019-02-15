@@ -1,0 +1,14 @@
+.weui-panel {
+  margin-top:0;
+  margin-bottom:0;
+}
+
+.weui-grid {
+  /* border-right: none; */
+  /* border-bottom: none; */
+}
+
+.weui-grids {
+  /* border-top: none; */
+  border-left: none;
+}

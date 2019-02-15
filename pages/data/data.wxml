@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-panel"></view>
+
+    <scroll-view scroll-y="true" style="height:100%;position: relative;" scroll-with-animation="true">
+      <block wx:for="{{dataArray}}" wx:for-item="records" wx:key="*this" wx:for-index="dataArrayIndex">
+        <block wx:for="{{records}}" wx:for-item="record" wx:key="{{record.id}}" wx:for-index="index">
+          <view class="weui-form-pre">
+            <view class="weui-form-preview__bd">
+              <view class="weui-form-preview__item" wx:for="{{showedFields}}" wx:for-item="field" wx:key="*this">
+                <view class="weui-form-preview__label">{{field.label}}:</view>
+                <view class="weui-form-preview__value">{{record[field.fieldid]}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+    </scroll-view>
+  </view>
+</view>

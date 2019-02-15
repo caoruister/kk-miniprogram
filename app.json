@@ -1,0 +1,62 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/app/app",
+    "pages/list/list",
+    "pages/add/add",
+    "pages/edit/edit",
+    "pages/view/view",
+    "pages/data/data",
+    "pages/user/user",
+    "pages/login/login",
+    "pages/todo/todo",
+    "pages/query/query",
+    "pages/webview/webview",
+    "pages/dynamic/dynamic1",
+    "pages/dynamic/dynamic2",
+    "pages/dynamic/dynamic3",
+    "pages/dynamic/dynamic4",
+    "pages/dynamic/dynamic5",
+    "pages/dynamic/dynamic6",
+    "pages/dynamic/dynamic7",
+    "pages/dynamic/dynamic8",
+    "pages/dynamic/dynamic9",
+    "pages/dynamic/dynamic10"
+  ],
+  "window":{
+    "backgroundColor": "#4182E6",
+    "backgroundTextStyle": "light",
+    "backgroundColorTop": "#4182E6",
+    "backgroundColorBottom": "#4182E6",
+    "navigationBarBackgroundColor": "#4182E6",
+    "navigationBarTitleText": "易企捷",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#479de6",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "assets/images/iconfont-home.png",
+        "selectedIconPath": "assets/images/iconfont-home-active.png"
+      },
+      {
+        "pagePath": "pages/app/app",
+        "text": "销售",
+        "iconPath": "assets/images/iconfont-application.png",
+        "selectedIconPath": "assets/images/iconfont-application-active.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "assets/images/iconfont-user.png",
+        "selectedIconPath": "assets/images/iconfont-user-active.png"
+      }
+    ]
+  },
+  "debug": true
+}

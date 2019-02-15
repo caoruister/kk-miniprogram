@@ -1,0 +1,14 @@
+<!--pages/dynamic/dynamic1.wxml-->
+<import src="../../pages/common/top.wxml" />
+<import src="../../pages/common/app.wxml" />
+<import src="../../pages/common/msg.wxml" />
+<import src="../../pages/common/img.wxml" />
+<import src="../../pages/common/swiper.wxml" />
+
+<view class="page">
+  <view class="page__bd">
+    <block wx:for="{{items}}" wx:key="template.path" wx:for-item="template">
+      <template is="{{template.templateType}}" data="{{items: template.data, style: 'height:'+template.bottomSeparatorHeight+';background-color:'+template.bottomSeparatorColor, sectionTitle: template.sectionTitle, hideSectionTitle: template.hideSectionTitle}}" wx:if="{{template.show}}"/>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+.pre-vertical-line {
+  width: 5px;
+  height: 16px; 
+  background: #4182E6;
+  margin-right:8px;
+}
+
+.weui-panel__hd {
+  display: flex;
+  vertical-align: middle;
+  line-height: 16px;
+}

@@ -1,0 +1,21 @@
+<view class="page">
+
+  <view class="page__bd">
+    <view wx:for="{{apps}}" wx:key="item.icon" class="weui-panel">
+      <view class="weui-panel__hd">
+       <view class="pre-vertical-line"></view>
+       <view>{{item.label}}</view> 
+      </view>
+      <view class="weui-panel__bd">
+        <view class="weui-grids">
+          <block wx:for="{{item.modules}}" wx:key="module.path" wx:for-item="module">
+            <navigator url="{{module.path}}" class="weui-grid" hover-class="weui-grid_active">
+              <image class="weui-grid__icon" src="{{module.icon}}" />
+              <view class="weui-grid__label">{{module.label}}</view>
+            </navigator>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
