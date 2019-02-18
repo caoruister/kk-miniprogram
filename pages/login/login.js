@@ -55,7 +55,7 @@ function Base64() {
 
 Page({
   data: {
-    username: 'zxm@qq.com',
+    username: 'zs',
     password: '1',
   },
   bindUsername: function (e) {

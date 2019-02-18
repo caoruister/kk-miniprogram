@@ -71,8 +71,8 @@ Page({
         wx.hideLoading();
         // console.log(res);
 
-        var data = res.data.root; // 接口相应的json数据
         if (res.data.success) {
+          var data = res.data.root;// 接口相应的json数据
           var records = data.records; // 接口中的data对应了一个数组，这里取名为 records
 
           wx.setNavigationBarTitle({
@@ -103,7 +103,8 @@ Page({
             })
           }
         } else {
-          if (data.msg === '未登录') {
+
+          if (res.data.msg === '未登录') {
             wx.redirectTo({
               url: '../../pages/login/login'
             })

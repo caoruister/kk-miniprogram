@@ -1,7 +1,7 @@
 {
   "pages":[
     "pages/home/home",
-    "pages/app/app",
+    "pages/sale/sale",
     "pages/list/list",
     "pages/add/add",
     "pages/edit/edit",
@@ -45,8 +45,8 @@
         "selectedIconPath": "assets/images/iconfont-home-active.png"
       },
       {
-        "pagePath": "pages/app/app",
-        "text": "销售",
+        "pagePath": "pages/sale/sale",
+        "text": "产品销售",
         "iconPath": "assets/images/iconfont-application.png",
         "selectedIconPath": "assets/images/iconfont-application-active.png"
       },

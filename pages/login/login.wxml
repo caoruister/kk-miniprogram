@@ -27,6 +27,8 @@
 
       <button formType="submit" class="weui-btn" type="primary" bindtap="login">登 录</button>
 
+<navigator url="/pages/add/add?objid=register" class="weui-agree__link">注册</navigator>
+
     </form>
   </view>
 </view>

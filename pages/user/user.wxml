@@ -37,6 +37,8 @@
         </view>
       </view>
     </view>
+    
+    <view class="bottom-gap"></view>
 
     <view class="weui-panel">
       <view class="weui-panel__bd">

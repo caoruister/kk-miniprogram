@@ -20,7 +20,7 @@ Page({
   },
   onShow() {
     var token = wx.getStorageSync('__token__');
-    if (token == null || token == '') {
+    if ((token == null || token == '') && this.options.objid != 'register') {
       wx.redirectTo({
         url: '../../pages/login/login'
       })
@@ -109,7 +109,7 @@ Page({
   },
   save: function (e) {
     var token = wx.getStorageSync('__token__');
-    if (token == null || token == '') {
+    if ((token == null || token == '') && this.data.options.objid != 'register') {
       wx.redirectTo({
         url: '../../pages/login/login'
       })

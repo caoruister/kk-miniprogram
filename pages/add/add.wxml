@@ -23,6 +23,8 @@
 
                   <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'N'}}" />
 
+                  <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" password placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'enc' || field.type == 'ENC'}}" />
+
                   <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value.name}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'Y'}}" />
 
                   <picker bindchange="bindSelectChange" id="{{field.fieldid}}" value="{{fieldValues[field.fieldid]}}" range="{{field.options}}" range-key="value" wx:if="{{field.type == 'L'}}">

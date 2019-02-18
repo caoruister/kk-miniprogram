@@ -45,7 +45,7 @@ page {
 
 .weui-panel {
   margin-top: 0;
-  margin-bottom: 20rpx;
+  /* margin-bottom: 20rpx; */
 }
 
 .weui-panel__hd {
