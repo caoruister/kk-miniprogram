@@ -64,7 +64,7 @@
         </view>
       </view>
 
-      <template is="button"/>
+      <!-- template is="button"/ -->
 
       <view class="weui-btn-area">
         <button class="weui-btn" type="primary" formType="submit">确定</button>

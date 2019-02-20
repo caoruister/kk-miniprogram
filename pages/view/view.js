@@ -42,7 +42,8 @@ Page({
       data: {
         token: token,
         objid: oThis.options.objid,
-        id: oThis.options.id
+        id: oThis.options.id,
+        layoutid: oThis.options.layoutid
       },
       success: function (response) {
         // console.log(response)

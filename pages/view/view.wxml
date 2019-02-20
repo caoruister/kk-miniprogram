@@ -29,7 +29,7 @@
         </view>
       </view>
 
-      <template is="button"/>
+      <!--template is="button"/ -->
     </form>
   </view>
 </view>

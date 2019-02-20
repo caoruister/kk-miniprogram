@@ -129,7 +129,8 @@ Page({
       data: {
         token: token,
         current: that.data.currentPage + 1,
-        pageSize: that.data.pageSize
+        pageSize: that.data.pageSize,
+        filterForMember: that.options.filterForMember
       },
       header: {
         'content-type': 'application/json'

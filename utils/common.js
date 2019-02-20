@@ -66,7 +66,8 @@ var getFieldValue = function (fieldName, pageInstance) {
 
 module.exports = {
   // URP_PREFIX: 'http://192.168.15.154:8080/xcx2c/',
-  URP_PREFIX: 'https://xcx-dev-1.xhx2018.cn:8443/xcx2c/',
+  // URP_PREFIX: 'https://xcx-dev-1.xhx2018.cn:8443/xcx2c/',
+  URP_PREFIX: 'http://10.10.10.180:8080/xcx2c/',
   showSuccess: showSuccess,
   alert: alert,
   getFieldValue: getFieldValue,
