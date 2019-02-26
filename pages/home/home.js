@@ -11,13 +11,13 @@ Page({
   },
   onShow() {
     var token = wx.getStorageSync('__token__');
-    if (token == null || token == '') {
-      wx.redirectTo({
-        url: '../../pages/login/login'
-      })
-    } else {
+    // if (token == null || token == '') {
+    //   wx.redirectTo({
+    //     url: '../../pages/login/login'
+    //   })
+    // } else {
       this.getData(token);
-    }
+    // }
   },
   getData: function (token) {
     var url = common.URP_PREFIX + 'page?op=getPage&pageName=HOME';

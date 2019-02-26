@@ -61,6 +61,10 @@ page {
   background-color: #4182e6;
 }
 
+.btn {
+  margin-left: 10rpx;
+}
+
 .required {
   color: red;
 }
@@ -84,4 +88,8 @@ page {
 
 swiper {
   height: 240px;
+}
+
+.btn-area {
+  text-align: center;
 }

@@ -7,6 +7,14 @@ Page({
     list: [],
     userInfo: {}
   },
+  onTabItemTap(item) {
+    var token = wx.getStorageSync('__token__');
+    if (token == null || token == '') {
+      wx.navigateTo({
+        url: '../../pages/login/login'
+      })
+    }
+  },
   onLoad(options) {
     // console.log(options);
 
@@ -15,14 +23,14 @@ Page({
     });
   },
   onShow: function() {
-    var token = wx.getStorageSync('__token__');
-    if (token == null || token == '') {
-      wx.redirectTo({
-        url: '../../pages/login/login'
-      })
-    } else {
-      this.getData(token);
-    }
+    // var token = wx.getStorageSync('__token__');
+    // if (token == null || token == '') {
+    //   wx.redirectTo({
+    //     url: '../../pages/login/login'
+    //   })
+    // } else {
+    //   this.getData(token);
+    // }
   },
   getData: function(token) {
     var url = common.URP_PREFIX + 'my?op=getMy';
@@ -70,8 +78,8 @@ Page({
         if (response.confirm) {
           wx.setStorageSync('__token__', '')
           wx.setStorageSync('__token__userName', '')
-          wx.redirectTo({
-            url: '../../pages/login/login'
+          wx.switchTab({
+            url: '../../pages/home/home'
           })
         }
       },

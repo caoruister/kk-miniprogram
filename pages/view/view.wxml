@@ -20,7 +20,7 @@
                     <text class="weui-input" decode="true">{{field.value || field.value2 || ''}}&nbsp;</text>
                   </view>
                   <view wx:else class="view-img">
-                    <image mode="scaleToFill" src="{{field.value}}"></image>
+                    <image mode="scaleToFill" src="{{field.thumbnail_url}}"></image>
                   </view>
                 </view>
               </view>
@@ -29,7 +29,7 @@
         </view>
       </view>
 
-      <!--template is="button"/ -->
+      <template is="button" data="{{ buttons: buttons }}"/>
     </form>
   </view>
 </view>
