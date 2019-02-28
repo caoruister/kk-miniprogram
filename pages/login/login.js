@@ -63,6 +63,11 @@ Page({
       username: e.detail.value
     })
   },
+  viewDontLog: function (e) {
+    wx.switchTab({
+      url: '../../pages/home/home'
+    })
+  },
   bindPassword: function (e) {
     this.setData({
       password: e.detail.value

@@ -1,11 +1,21 @@
 'use strict';
-const common = require('./common.js')
+const common = require('common.js')
 
 var alert = common.alert;
 
 var onClick1 = function (pageInstance) {
-  let cpjg = pageInstance.getFieldValue('cpjg');
-  alert(cpjg);
+  let info = {
+    id: pageInstance.getId(),
+    name: pageInstance.getFieldValue('name'),
+    cpjg: pageInstance.getFieldValue('cpjg'),
+    yjjg: pageInstance.getFieldValue('yjjg'),
+    cpsm: pageInstance.getFieldValue('cpsm')
+  }
+  wx.setStorageSync('__cpk.info__', JSON.stringify(info));
+
+  wx.navigateTo({
+    url: '/pages/add/add?objid=2C904B72686017330168797345410283&layoutid=2C904B72692E41DB01692E4786C9006A&notNeedLogin=true&navigateBackDelta=2'
+  })
 }
 
 var onClick2 = function (pageInstance) {}

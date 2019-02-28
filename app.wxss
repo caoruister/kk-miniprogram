@@ -93,3 +93,7 @@ swiper {
 .btn-area {
   text-align: center;
 }
+
+.readonly {
+  font-weight: bold;
+}

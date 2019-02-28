@@ -17,7 +17,7 @@
                 </view>
                 <view class="weui-cell__bd">
                   <view wx:if="{{field.type != 'IMG'}}">
-                    <text class="weui-input" decode="true">{{field.value || field.value2 || ''}}&nbsp;</text>
+                    <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
                   </view>
                   <view wx:else class="view-img">
                     <image mode="scaleToFill" src="{{field.thumbnail_url}}"></image>

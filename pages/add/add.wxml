@@ -6,61 +6,64 @@
     <form bindsubmit="save" bindreset="formReset">
       <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
       <view wx:for="{{sections}}" wx:for-item="section" wx:key="section" class="weui-panel">
-        <view class="weui-panel__hd">
-          <view>{{section.title}}</view>
-        </view>
-        <view class="weui-panel__bd">
-          <block wx:for="{{section.fields}}" wx:for-item="field" wx:key="field">
-            <view wx:if="{{field.type != 'X'}}" class="weui-cell weui-cell_input">
-              <view class="weui-cell__hd">
-                <view class="weui-label" wx:if="{{!field.hideLabel}}">
-                  <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:</view>
-              </view>
+        <view wx:if="{{!section.defaultHideInEditPage}}">
+          <view class="weui-panel__hd" wx:if="{{section.titleShowedInEditPage}}">
+            <view>{{section.title}}</view>
+          </view>
 
-              <view class="weui-cell__bd">
-                <view wx:if="{{!field.readOnly}}">
-                  <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'S'}}" />
-
-                  <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'N'}}" />
-
-                  <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" password placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'enc' || field.type == 'ENC'}}" />
-
-                  <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value.name}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'Y'}}" />
-
-                  <picker bindchange="bindSelectChange" id="{{field.fieldid}}" value="{{fieldValues[field.fieldid]}}" range="{{field.options}}" range-key="value" wx:if="{{field.type == 'L'}}">
-                    <view class="weui-select weui-select_in-select-after">{{field.options[fieldValues[field.fieldid]].value}}</view>
-                  </picker>
-
-                  <picker bindchange="bindSelectChange" mode="date" id="{{field.fieldid}}" value="{{fieldValues[field.fieldid]}}" wx:if="{{field.type == 'D'}}">
-                    <view class="weui-select weui-select_in-select-after">
-                      {{fieldValues[field.fieldid]}}
-                    </view>
-                  </picker>
+          <view class="weui-panel__bd">
+            <block wx:for="{{section.fields}}" wx:for-item="field" wx:key="field">
+              <view wx:if="{{field.type != 'X'}}" class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label" wx:if="{{!field.hideLabel}}">
+                    <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:</view>
                 </view>
-                <view wx:else>
-                  <text class="weui-input" decode="true">{{field.value || field.value2 || ''}}&nbsp;</text>
+
+                <view class="weui-cell__bd">
+                  <view wx:if="{{!field.readOnly}}">
+                    <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'S'}}" />
+
+                    <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'N'}}" />
+
+                    <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" password placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'enc' || field.type == 'ENC'}}" />
+
+                    <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value.name}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'Y'}}" />
+
+                    <picker bindchange="bindSelectChange" id="{{field.fieldid}}" value="{{fieldValues[field.fieldid]}}" range="{{field.options}}" range-key="value" wx:if="{{field.type == 'L'}}">
+                      <view class="weui-select weui-select_in-select-after">{{field.options[fieldValues[field.fieldid]].value}}</view>
+                    </picker>
+
+                    <picker bindchange="bindSelectChange" mode="date" id="{{field.fieldid}}" value="{{fieldValues[field.fieldid]}}" wx:if="{{field.type == 'D'}}">
+                      <view class="weui-select weui-select_in-select-after">
+                        {{fieldValues[field.fieldid]}}
+                      </view>
+                    </picker>
+                  </view>
+                  <view wx:else>
+                    <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
+                  </view>
                 </view>
               </view>
-            </view>
-            <view wx:elif="{{field.type == 'X'}}">
-              <view class="weui-cells__title" wx:if="{{!field.hideLabel}}">
-                <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:
-              </view>
-              <view class="weui-cells weui-cells_after-title">
-                <view class="weui-cell">
-                  <view class="weui-cell__bd">
-                    <view wx:if="{{!field.readOnly}}">
-                      <textarea class="weui-textarea" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" maxlength="{{field.length || 10}}" style="height: 3.3em" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" />
-                      <view class="weui-textarea-counter">0/{{field.length}}</view>
-                    </view>
-                    <view wx:else>
-                      <text class="weui-input" decode="true">{{field.value || ''}}&nbsp;</text>
+              <view wx:elif="{{field.type == 'X'}}">
+                <view class="weui-cells__title" wx:if="{{!field.hideLabel}}">
+                  <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:
+                </view>
+                <view class="weui-cells weui-cells_after-title">
+                  <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                      <view wx:if="{{!field.readOnly}}">
+                        <textarea class="weui-textarea" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" maxlength="{{field.length || 10}}" style="height: 3.3em" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" />
+                        <view class="weui-textarea-counter">0/{{field.length}}</view>
+                      </view>
+                      <view wx:else>
+                        <text class="weui-input readonly" decode="true">{{field.value || ''}}&nbsp;</text>
+                      </view>
                     </view>
                   </view>
                 </view>
               </view>
-            </view>
-          </block>
+            </block>
+          </view>
         </view>
       </view>
 

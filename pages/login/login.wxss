@@ -9,3 +9,11 @@ page {
   margin-left:17px;
   margin-right:17px;
 }
+
+.right {
+  float: right;
+}
+
+.marginTop10 {
+  margin-top: 10px;
+}

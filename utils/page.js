@@ -1,15 +1,42 @@
 'use strict';
-const common = require('./common.js')
+const common = require('common.js')
 
 var alert = common.alert;
 
 var onLoadOfPage1 = function (pageInstance) {
-  alert('xxx');
+  var info = wx.getStorageSync('__cpk.info__');
+  console.log(info);
+  if (info != null && info != '') {
+    info = JSON.parse(info);
+    //
+
+    //alert(info.name);
+    pageInstance.setFieldValue('cpmc', {
+      id: info.id,
+      name: info.name
+    });
+    pageInstance.setFieldValue('cpjg', info.cpjg);
+    pageInstance.setFieldValue('yjjg', info.yjjg);
+    pageInstance.setFieldValue('cpsm', info.cpsm);
+  }
 }
 
 var onLoadOfPage2 = function (pageInstance) {
-let cpmc = wx.getStorageSync('__.cp.cpmc__');
-pageInstance.setFieldValue('cpmc', cpmc);
+  var info = wx.getStorageSync('__cpk.info__');
+  console.log(info);
+  if (info != null && info != '') {
+    info = JSON.parse(info);
+    //
+
+    //alert(info.name);
+    pageInstance.setFieldValue('cpmc', {
+      id: info.id,
+      name: info.name
+    });
+    pageInstance.setFieldValue('cpjg', info.cpjg);
+    pageInstance.setFieldValue('yjjg', info.yjjg);
+    pageInstance.setFieldValue('cpsm', info.cpsm);
+  }
 }
 
 var onLoadOfPage3 = function (pageInstance) {}

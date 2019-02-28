@@ -38,7 +38,7 @@
                   </picker>
                 </view>
                 <view wx:else>
-                  <text class="weui-input" decode="true">{{field.value || field.value2 || ''}}&nbsp;</text>
+                  <text class="weui-input" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
                 </view>
               </view>
             </view>

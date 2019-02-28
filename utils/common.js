@@ -40,8 +40,18 @@ var setFieldValue = function (fieldName, value, pageInstance) {
       let field = fields[k];
 
       if (field.name == fieldName) {
+        console.log(value);
+        if (field.type == 'Y') {
+          field.value2 = (value != null ? value.name : null);
+        }
+        //
         field.value = value;
+        //
+        let fieldValues = pageInstance.data.fieldValues;
+        fieldValues[field.fieldid] = value;
+        //
         pageInstance.setData({
+          fieldValues: fieldValues,
           sections: sections
         });
       }
@@ -67,8 +77,10 @@ var getFieldValue = function (fieldName, pageInstance) {
 module.exports = {
   // URP_PREFIX: 'http://192.168.15.154:8080/xcx2c/',
   // URP_PREFIX: 'https://xcx-dev-1.xhx2018.cn:8443/xcx2c/',
-  URP_PREFIX: 'http://192.168.15.156:8080/xcx2c/',
-  FILE_URL_PREFIX: 'http://192.168.15.156:8080/file/',
+  // URP_PREFIX: 'http://localhost:8080/xcx2c/',
+  // FILE_URL_PREFIX: 'http://localhost:8080/file/',
+  URP_PREFIX: 'http://www.smglpt.com/xcx2c/',
+  FILE_URL_PREFIX: 'http://www.smglpt.com/file/',
   showSuccess: showSuccess,
   alert: alert,
   setFieldValue: setFieldValue,

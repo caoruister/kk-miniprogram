@@ -56,6 +56,7 @@ Page({
       data: {
         token: token,
         objid: oThis.options.objid,
+        layoutid: oThis.options.layoutid,
         notNeedLogin: (oThis.options.notNeedLogin=='true'?true:false)
       },
       success: function (response) {
@@ -65,14 +66,14 @@ Page({
           let sections = data.sections;
           let onLoadMethodName = data.onLoadMethodName;
           //
-          let fieldValues = {}, fieldOptions = {};
+          let fieldValues = {}, fieldOptions = {}, fieldsMap={};
           for (var i = 0; i < sections.length; i++) {
             let section = sections[i];
             let fields = section.fields;
             for (var k = 0; k < fields.length; k++) {
               let field = fields[k];
-              
               fieldValues[field.fieldid] = field.value;
+              fieldsMap[field.fieldid] = field;
               if (field.type == "L") {
                 fieldOptions[field.fieldid] = field.options;
               }
@@ -84,6 +85,7 @@ Page({
             objLabel: data.objLabel,
             layoutid: data.layoutid,
             sections: sections,
+            fieldsMap: fieldsMap,
             fieldValues: fieldValues,
             fieldOptions: fieldOptions
           })
@@ -129,23 +131,45 @@ Page({
     })
   },
   save: function (e) {
+    let navigateBackDelta = this.data.options.navigateBackDelta;
+    if (navigateBackDelta == null) {
+      navigateBackDelta = 1;
+    }
+    //
     var token = wx.getStorageSync('__token__');
     if ((token == null || token == '') && this.data.options.objid != 'register') {
       wx.redirectTo({
         url: '../../pages/login/login'
       })
     } else {
-      // console.log(this.data.fieldValues);
+      console.log(this.data.fieldValues);
       let fieldValues = this.data.fieldValues;
       let data = {
         token: token,
         objid: this.data.objid,
         layoutid: this.data.layoutid
       };
+      let fieldsMap = this.data.fieldsMap;
       for (var key in fieldValues) {
-        data[key] = fieldValues[key];
-        if (this.data.fieldOptions[key] && data[key]) {
-          data[key] = this.data.fieldOptions[key][data[key]].value;
+        let field = fieldsMap[key];
+        //
+        let value = fieldValues[key];
+        if (field.required == true && (value == null || value == '')) {
+          common.alert('请输入' + field.label);
+          return;
+        }
+        //
+        let type = field.type;
+        if (type == 'Y') { // 查找关系
+          if (value != null) {
+            data[key + '[id]'] = value.id;
+            data[key + '[name]'] = value.name;
+          }
+        } else {
+          data[key] = value;
+          if (this.data.fieldOptions[key] && data[key]) {
+            data[key] = this.data.fieldOptions[key][data[key]].value;
+          }
         }
       }
       //
@@ -163,8 +187,9 @@ Page({
           let data = response.data;
           if (data.success) {
             common.alert('保存成功', function(){
+              console.log(navigateBackDelta);
               wx.navigateBack({
-                delta: 1
+                delta: parseInt(navigateBackDelta.toString())
               });
             });
           } else {
