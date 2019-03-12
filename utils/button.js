@@ -9,7 +9,8 @@ var onClick1 = function (pageInstance) {
     name: pageInstance.getFieldValue('name'),
     cpjg: pageInstance.getFieldValue('cpjg'),
     yjjg: pageInstance.getFieldValue('yjjg'),
-    cpsm: pageInstance.getFieldValue('cpsm')
+    cpsm: pageInstance.getFieldValue('cpsm'),
+    cplx: pageInstance.getFieldValue('cplx')
   }
   wx.setStorageSync('__cpk.info__', JSON.stringify(info));
 
@@ -18,9 +19,49 @@ var onClick1 = function (pageInstance) {
   })
 }
 
-var onClick2 = function (pageInstance) {}
-var onClick3 = function (pageInstance) {}
-var onClick4 = function (pageInstance) {}
+var onClick2 = function (pageInstance) {
+  let info = {
+    id: pageInstance.getId(),
+    name: pageInstance.getFieldValue('name'),
+    cpjg: pageInstance.getFieldValue('cpjg'),
+    yjjg: pageInstance.getFieldValue('yjjg'),
+    cpsm: pageInstance.getFieldValue('cpsm'),
+    cplx: pageInstance.getFieldValue('cplx')
+  }
+  wx.setStorageSync('__cpk.info__', JSON.stringify(info));
+
+  wx.navigateTo({
+    url: '/pages/add/add?objid=2C904B72686017330168797345410283&layoutid=2C904B72692E41DB01692E4786C9006A&notNeedLogin=true&navigateBackDelta=2'
+  })
+}
+
+var onClick3 = function (pageInstance) {
+  let info = {
+    id: pageInstance.getId(),
+    name: pageInstance.getFieldValue('name'),
+    cpjg: pageInstance.getFieldValue('cpjg'),
+    yjjg: pageInstance.getFieldValue('yjjg'),
+    cpsm: pageInstance.getFieldValue('cpsm'),
+    cplx: pageInstance.getFieldValue('cplx')
+  }
+  wx.setStorageSync('__cpk.info__', JSON.stringify(info));
+
+  wx.navigateTo({
+    url: '/pages/add/add?objid=2C904B72686017330168797345410283&layoutid=2C904B72692E41DB01692E4786C9006A&notNeedLogin=true&navigateBackDelta=2'
+  })
+}
+
+var onClick4 = function (pageInstance) {
+  let callbackWhenSuccss = function (id) {
+    common.alert('订单生成成功', function () {
+      wx.navigateTo({
+        url: '/pages/view/view?objid=2C904B72686017330168797345410283&id=' + id + '&layoutid=2C904B72697209B301697212BF84001A&navigateBackDelta=3'
+      })
+    });
+  }
+  pageInstance.submitSave(callbackWhenSuccss);
+}
+
 var onClick5 = function (pageInstance) {}
 var onClick6 = function (pageInstance) {}
 var onClick7 = function (pageInstance) {}

@@ -47,11 +47,23 @@ Page({
       success: function(response) {
         // console.log(response)
         let data = response.data;
-        if (data.success) {
-          
+        if (data.success) {          
+          let userInfo = data.userInfo;
+          let headIcon = userInfo.headIcon;
+          if (headIcon != null) {
+            console.log(headIcon);
+            //
+            if (headIcon.length > 0) {
+              let item = headIcon[0];
+              let thumbnail_url = common.FILE_URL_PREFIX + item.thumbnail_url;
+              console.log(thumbnail_url);
+              userInfo.headIcon = thumbnail_url;
+            }
+          }
+
           oThis.setData({
             list: data.list,
-            userInfo: data.userInfo
+              userInfo: userInfo
           })
 
         } else {

@@ -10,6 +10,7 @@ Page({
     fieldOptions: {}, // key - fieldid, value - options
     objLabel: '',
     layoutid: '',
+    buttons: [],
     sections: [],
     options: {}
   },
@@ -63,6 +64,7 @@ Page({
         // console.log(response)
         let data = response.data;
         if (data.success) {
+          let buttons = data.buttons;
           let sections = data.sections;
           let onLoadMethodName = data.onLoadMethodName;
           //
@@ -84,6 +86,7 @@ Page({
             objid: data.objid,
             objLabel: data.objLabel,
             layoutid: data.layoutid,
+            buttons: buttons,
             sections: sections,
             fieldsMap: fieldsMap,
             fieldValues: fieldValues,
@@ -131,6 +134,9 @@ Page({
     })
   },
   save: function (e) {
+    this.submitSave();
+  },
+  submitSave: function (callbackWhenSuccss) {
     let navigateBackDelta = this.data.options.navigateBackDelta;
     if (navigateBackDelta == null) {
       navigateBackDelta = 1;
@@ -186,12 +192,16 @@ Page({
           // console.log(response)
           let data = response.data;
           if (data.success) {
-            common.alert('保存成功', function(){
-              console.log(navigateBackDelta);
-              wx.navigateBack({
-                delta: parseInt(navigateBackDelta.toString())
+            if (callbackWhenSuccss != null) {
+              callbackWhenSuccss(data.id);
+            } else {
+              common.alert('保存成功', function () {
+                console.log(navigateBackDelta);
+                wx.navigateBack({
+                  delta: parseInt(navigateBackDelta.toString())
+                });
               });
-            });
+            }
           } else {
             if (data.msg === '未登录') {
               wx.redirectTo({

@@ -11,6 +11,7 @@ Page({
     objLabel: '',
     layoutid: '',
     id: '',
+    buttons: [],
     sections: [],
     options: {}
   },
@@ -59,6 +60,7 @@ Page({
         // console.log(response)
         let data = response.data;
         if (data.success) {
+          let buttons = data.buttons;
           let sections = data.sections;
           let onLoadMethodName = data.onLoadMethodName;
           //
@@ -88,6 +90,7 @@ Page({
             objLabel: data.objLabel,
             layoutid: data.layoutid,
             id: data.id,
+            buttons: buttons,
             sections: sections,
             fieldValues: fieldValues,
             fieldOptions: fieldOptions

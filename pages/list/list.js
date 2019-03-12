@@ -62,7 +62,8 @@ Page({
       url: url,
       data: {
         token: token,
-        objid: that.options.objid
+        objid: that.options.objid,
+        notNeedLogin: that.options.notNeedLogin
       },
       header: {
         'content-type': 'application/json'

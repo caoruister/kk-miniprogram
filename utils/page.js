@@ -18,6 +18,7 @@ var onLoadOfPage1 = function (pageInstance) {
     pageInstance.setFieldValue('cpjg', info.cpjg);
     pageInstance.setFieldValue('yjjg', info.yjjg);
     pageInstance.setFieldValue('cpsm', info.cpsm);
+    pageInstance.setFieldValue('cplx', info.cplx);
   }
 }
 
@@ -39,9 +40,62 @@ var onLoadOfPage2 = function (pageInstance) {
   }
 }
 
-var onLoadOfPage3 = function (pageInstance) {}
-var onLoadOfPage4 = function (pageInstance) {}
-var onLoadOfPage5 = function (pageInstance) {}
+var onLoadOfPage3 = function (pageInstance) {
+  var info = wx.getStorageSync('__cpk.info__');
+  console.log(info);
+  if (info != null && info != '') {
+    info = JSON.parse(info);
+    //
+
+    //alert(info.name);
+    pageInstance.setFieldValue('cpmc', {
+      id: info.id,
+      name: info.name
+    });
+    pageInstance.setFieldValue('cpjg', info.cpjg);
+    pageInstance.setFieldValue('yjjg', info.yjjg);
+    pageInstance.setFieldValue('cpsm', info.cpsm);
+    pageInstance.setFieldValue('cplx', info.cplx);
+  }
+}
+
+var onLoadOfPage4 = function (pageInstance) {
+  var info = wx.getStorageSync('__cpk.info__');
+  console.log(info);
+  if (info != null && info != '') {
+    info = JSON.parse(info);
+    //
+
+    //alert(info.name);
+    pageInstance.setFieldValue('cpmc', {
+      id: info.id,
+      name: info.name
+    });
+    pageInstance.setFieldValue('cpjg', info.cpjg);
+    pageInstance.setFieldValue('yjjg', info.yjjg);
+    pageInstance.setFieldValue('cpsm', info.cpsm);
+  }
+}
+
+var onLoadOfPage5 = function (pageInstance) {
+  var info = wx.getStorageSync('__cpk.info__');
+  console.log(info);
+  if (info != null && info != '') {
+    info = JSON.parse(info);
+    //
+
+    //alert(info.name);
+    pageInstance.setFieldValue('cpmc', {
+      id: info.id,
+      name: info.name
+    });
+    pageInstance.setFieldValue('cpjg', info.cpjg);
+    pageInstance.setFieldValue('yjjg', info.yjjg);
+    pageInstance.setFieldValue('cpsm', info.cpsm);
+    pageInstance.setFieldValue('cplx', info.cplx);
+  }
+}
+
 var onLoadOfPage6 = function (pageInstance) {}
 var onLoadOfPage7 = function (pageInstance) {}
 var onLoadOfPage8 = function (pageInstance) {}
