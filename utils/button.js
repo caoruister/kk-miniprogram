@@ -5,10 +5,6 @@ var alert = common.alert;
 var callInterface = common.callInterface;
 
 var onClick1 = function (pageInstance) {
-  callInterface('test1', {
-    notNeedLogin: true
-  });
-  return;///////////////
   let info = {
     id: pageInstance.getId(),
     name: pageInstance.getFieldValue('name'),
@@ -25,10 +21,6 @@ var onClick1 = function (pageInstance) {
 }
 
 var onClick2 = function (pageInstance) {
-  callInterface('test1', {
-    notNeedLogin: true
-  });
-  return;///////////////
   let info = {
     id: pageInstance.getId(),
     name: pageInstance.getFieldValue('name'),
@@ -61,21 +53,41 @@ var onClick3 = function (pageInstance) {
 }
 
 var onClick4 = function (pageInstance) {
-  callInterface('test1', {
-    notNeedLogin: true
-  });
-  return;///////////////
-  let callbackWhenSuccss = function (id) {
+let callbackWhenSuccss = function(id) {
     common.alert('订单生成成功', function () {
-      wx.navigateTo({
-        url: '/pages/view/view?objid=2C904B72686017330168797345410283&id=' + id + '&layoutid=2C904B72697209B301697212BF84001A&navigateBackDelta=3'
-      })
+        wx.redirectTo({
+        url: '/pages/view/view?objid=2C904B72686017330168797345410283&id=' + id + '&layoutid=2C904B72697209B301697212BF84001A&showLayoutName=true&navigateBackDelta=3'
+        })
     });
-  }
-  pageInstance.submitSave(callbackWhenSuccss);
+}
+pageInstance.submitSave(callbackWhenSuccss);
 }
 
-var onClick5 = function (pageInstance) {}
+var onClick5 = function (pageInstance) {
+// 调用支付接口（以后改成 直接触发器 第三方支付，支付成功之后再调用支付接口）
+let callbackWhenSuccess = function(data) {
+    if (data.success) {
+        alert('支付完成', function() {
+            // 跳到 首页
+            wx.navigateBack({
+                delta: 100
+            });
+        });
+    } else {
+        if (data.msg != null) {
+            alert(data.msg);
+        } else {
+            alert('操作失败');
+        }
+    }
+}
+
+callInterface('payOrder', {
+    notNeedLogin: true,
+    id: pageInstance.data.id
+}, callbackWhenSuccess);
+}
+
 var onClick6 = function (pageInstance) {}
 var onClick7 = function (pageInstance) {}
 var onClick8 = function (pageInstance) {}

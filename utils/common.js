@@ -81,8 +81,7 @@ var getFieldValue = function (fieldName, pageInstance) {
   }
 }
 
-var callInterface = function (apiName, data) {
-  console.log(123789);
+var callInterface = function (apiName, data, callbackWhenSuccess) {
   if (apiName == null || apiName == '') {
     alert('参数apiName取值为空');
     return;
@@ -109,21 +108,22 @@ var callInterface = function (apiName, data) {
     },
     data: newData,
     success: function (response) {
-      console.log('----------------2---------');
-      // console.log(response)
+      console.log(response)
       let data = response.data;
       if (data.msg === '未登录') {
         wx.redirectTo({
           url: '../../pages/login/login'
         })
+        return;
       }
-      return data;
+      if (callbackWhenSuccess != null) {
+        callbackWhenSuccess(data);
+      }
     },
     fail: function (response) {
       console.error(response);
     }
   })
-  console.log('----------------1---------');
 }
 
 module.exports = {

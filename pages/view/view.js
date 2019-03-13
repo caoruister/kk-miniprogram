@@ -111,6 +111,7 @@ Page({
           console.log(buttons);
           oThis.setData({
             objid: data.objid,
+            id: oThis.options.id,
             objLabel: data.objLabel,
             buttons: buttons,
             sections: sections,
@@ -118,8 +119,18 @@ Page({
             fieldOptions: fieldOptions
           })
 
+          let title = "查看" + oThis.data.objLabel;
+          if (oThis.options.title != null && oThis.options.title != '') {
+            title = oThis.options.title;
+          } else {
+            if (oThis.options.showLayoutName == 'true') {
+              if (data.layoutName != null && data.layoutName != '') {
+                title = data.layoutName;
+              }
+            }
+          }
           wx.setNavigationBarTitle({
-            title: "查看" + oThis.data.objLabel
+            title: title
           });
 
           console.log(onLoadMethodName);

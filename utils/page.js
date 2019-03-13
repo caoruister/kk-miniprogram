@@ -2,6 +2,7 @@
 const common = require('common.js')
 
 var alert = common.alert;
+var callInterface = common.callInterface;
 
 var onLoadOfPage1 = function (pageInstance) {
   var info = wx.getStorageSync('__cpk.info__');
