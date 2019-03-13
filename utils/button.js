@@ -2,8 +2,13 @@
 const common = require('common.js')
 
 var alert = common.alert;
+var callInterface = common.callInterface;
 
 var onClick1 = function (pageInstance) {
+  callInterface('test1', {
+    notNeedLogin: true
+  });
+  return;///////////////
   let info = {
     id: pageInstance.getId(),
     name: pageInstance.getFieldValue('name'),
@@ -20,6 +25,10 @@ var onClick1 = function (pageInstance) {
 }
 
 var onClick2 = function (pageInstance) {
+  callInterface('test1', {
+    notNeedLogin: true
+  });
+  return;///////////////
   let info = {
     id: pageInstance.getId(),
     name: pageInstance.getFieldValue('name'),
@@ -52,6 +61,10 @@ var onClick3 = function (pageInstance) {
 }
 
 var onClick4 = function (pageInstance) {
+  callInterface('test1', {
+    notNeedLogin: true
+  });
+  return;///////////////
   let callbackWhenSuccss = function (id) {
     common.alert('订单生成成功', function () {
       wx.navigateTo({

@@ -1,5 +1,12 @@
 'use strict';
 
+// URP_PREFIX: 'http://192.168.15.154:8080/xcx2c/',
+// URP_PREFIX: 'https://xcx-dev-1.xhx2018.cn:8443/xcx2c/',
+// URP_PREFIX: 'http://localhost:8080/xcx2c/',
+// FILE_URL_PREFIX: 'http://localhost:8080/file/',
+var URP_PREFIX = 'https://www.smglpt.com/xcx2c/';
+var FILE_URL_PREFIX = 'https://www.smglpt.com/file/';
+
 // 显示成功提示
 var showSuccess = text => wx.showToast({
   title: text,
@@ -74,15 +81,57 @@ var getFieldValue = function (fieldName, pageInstance) {
   }
 }
 
+var callInterface = function (apiName, data) {
+  console.log(123789);
+  if (apiName == null || apiName == '') {
+    alert('参数apiName取值为空');
+    return;
+  }
+  //
+  var token = wx.getStorageSync('__token__');
+  let newData = {
+    apiName: apiName,
+    token: token,
+  };
+  if (data != null && typeof (data) == 'object') {
+    for (var key in data) {
+      newData[key] = data[key];
+    }
+  }
+
+  var url = URP_PREFIX + 'callInterface';
+  var oThis = this;
+  wx.request({
+    url: url,
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    },
+    data: newData,
+    success: function (response) {
+      console.log('----------------2---------');
+      // console.log(response)
+      let data = response.data;
+      if (data.msg === '未登录') {
+        wx.redirectTo({
+          url: '../../pages/login/login'
+        })
+      }
+      return data;
+    },
+    fail: function (response) {
+      console.error(response);
+    }
+  })
+  console.log('----------------1---------');
+}
+
 module.exports = {
-  // URP_PREFIX: 'http://192.168.15.154:8080/xcx2c/',
-  // URP_PREFIX: 'https://xcx-dev-1.xhx2018.cn:8443/xcx2c/',
-  // URP_PREFIX: 'http://localhost:8080/xcx2c/',
-  // FILE_URL_PREFIX: 'http://localhost:8080/file/',
-  URP_PREFIX: 'https://www.smglpt.com/xcx2c/',
-  FILE_URL_PREFIX: 'https://www.smglpt.com/file/',
+  URP_PREFIX: URP_PREFIX,
+  FILE_URL_PREFIX: FILE_URL_PREFIX,
   showSuccess: showSuccess,
   alert: alert,
   setFieldValue: setFieldValue,
-  getFieldValue: getFieldValue
+  getFieldValue: getFieldValue,
+  callInterface: callInterface
 }
