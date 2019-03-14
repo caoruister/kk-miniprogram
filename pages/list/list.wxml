@@ -5,7 +5,7 @@
     <scroll-view scroll-y="true" scroll-with-animation="true">
       <block wx:for="{{dataArray}}" wx:for-item="records" wx:key="*this" wx:for-index="dataArrayIndex">
         <block wx:for="{{records}}" wx:for-item="record" wx:key="{{record.id}}" wx:for-index="index">
-          <navigator class="weui-form-pre" url="{{record.canEdit ? '/pages/edit/edit?objid='+options.objid+'&id=' + record.id : (record.canView ? '/pages/view/view?objid='+options.objid+'&id=' + record.id : '')}}">
+          <navigator class="weui-form-pre" url="{{record.canEdit ? '/pages/edit/edit?objid='+options.objid+'&id=' + record.id : (record.canView ? '/pages/view/view?' + ((options.layoutidOfViewPage != null && options.layoutidOfViewPage != '') ? ('layoutid=' + options.layoutidOfViewPage + '&') : '') + 'objid='+options.objid+'&id=' + record.id : '')}}">
             <view class="weui-form-preview__bd">
               <view class="weui-form-preview__item" wx:for="{{showedFields}}" wx:for-item="field" wx:key="*this">
                 <view class="weui-form-preview__label">{{field.label}}:</view>

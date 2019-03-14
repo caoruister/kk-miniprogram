@@ -64,6 +64,66 @@ pageInstance.submitSave(callbackWhenSuccss);
 }
 
 var onClick5 = function (pageInstance) {
+var info = wx.getStorageSync('__cpk.info__');
+console.log(info);
+let reletDevice = false; // 是否为  设备续租
+let idOfYHSB = null; // id of 用户设备
+if (info != null && info != '') {
+  info = JSON.parse(info);
+  //
+  reletDevice = (info.reletDevice == 'true');
+  idOfYHSB = info.id;
+}
+
+console.log('reletDevice=' + reletDevice);
+if (reletDevice == false) {
+    let callbackWhenSuccss = function(id) {
+        common.alert('订单生成成功', function () {
+            wx.redirectTo({
+            url: '/pages/view/view?objid=2C904B72686017330168797345410283&id=' + id + '&layoutid=2C904B72697209B301697212BF84001A&showLayoutName=true&navigateBackDelta=3'
+            })
+        });
+    }
+    pageInstance.submitSave(callbackWhenSuccss);
+} else { // 设备续租
+    let callbackWhenSuccess = function(data) {
+        if (data.success) {
+            common.alert('订单生成成功', function () {
+                wx.redirectTo({
+                url: '/pages/view/view?objid=2C904B72686017330168797345410283&id=' + data.id + '&layoutid=2C904B72697209B301697212BF84001A&showLayoutName=true&navigateBackDelta=3'
+                })
+            });
+        } else {
+            if (data.msg != null) {
+                alert(data.msg);
+            } else {
+                alert('操作失败');
+            }
+        }
+    }
+
+  var ksrq = pageInstance.getFieldValue('ksrq');
+  var jzrq = pageInstance.getFieldValue('jzrq');
+  console.log('ksrq=' + ksrq);
+  console.log('jzrq=' + jzrq);
+    if (ksrq == null || ksrq == '') {
+        alert('请输入开始日期');
+        return;
+    }
+    if (jzrq == null || jzrq == '') {
+        alert('请输入截止日期');
+        return;
+    }
+    callInterface('reletDevice', {
+        notNeedLogin: true,
+        idOfYHSB: idOfYHSB, // id of 用户设备,
+        ksrq: ksrq,
+        jzrq: jzrq
+    }, callbackWhenSuccess);
+}
+}
+
+var onClick6 = function (pageInstance) {
 // 调用支付接口（以后改成 直接触发器 第三方支付，支付成功之后再调用支付接口）
 let callbackWhenSuccess = function(data) {
     if (data.success) {
@@ -88,8 +148,23 @@ callInterface('payOrder', {
 }, callbackWhenSuccess);
 }
 
-var onClick6 = function (pageInstance) {}
-var onClick7 = function (pageInstance) {}
+var onClick7 = function (pageInstance) {
+  let info = {
+    id: pageInstance.getId(),
+    name: pageInstance.getFieldValue('cpmc'),
+    cpjg: pageInstance.getFieldValue('cpjg'),
+    yjjg: pageInstance.getFieldValue('yjjg'),
+    cpsm: pageInstance.getFieldValue('cpsm'),
+    cplx: pageInstance.getFieldValue('cplx'),
+    reletDevice: 'true' // 设备续租
+  }
+  wx.setStorageSync('__cpk.info__', JSON.stringify(info));
+
+  wx.navigateTo({
+    url: '/pages/add/add?objid=2C904B72686017330168797345410283&layoutid=2C904B7269711BF3016971C144CE0109&notNeedLogin=true&navigateBackDelta=2'
+  })
+}
+
 var onClick8 = function (pageInstance) {}
 var onClick9 = function (pageInstance) {}
 var onClick10 = function (pageInstance) {}

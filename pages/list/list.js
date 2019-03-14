@@ -58,13 +58,20 @@ Page({
     })
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     var url = common.URP_PREFIX + 'record?op=searchRecords';
+    var tempData = {
+      token: token,
+      objid: that.options.objid,
+      notNeedLogin: that.options.notNeedLogin
+    };
+    for (var key in that.options) {
+      var tempKey = key.toString();
+      if (tempKey.indexOf('CONDITION_') == 0) { // key的值以 CONDITION_ 开头
+        tempData[key] = that.options[key];
+      }
+    }
     wx.request({
       url: url,
-      data: {
-        token: token,
-        objid: that.options.objid,
-        notNeedLogin: that.options.notNeedLogin
-      },
+        data: tempData,
       header: {
         'content-type': 'application/json'
       },
@@ -131,14 +138,22 @@ Page({
     })
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     var url = common.URP_PREFIX + 'record?op=searchRecords&objid=' + that.options.objid;
+    var tempData = {
+      token: token,
+      current: that.data.currentPage + 1,
+      pageSize: that.data.pageSize,
+      filterForMember: that.options.filterForMember,
+      notNeedLogin: that.options.notNeedLogin
+    };
+    for (var key in that.options) {
+      var tempKey = key.toString();
+      if (tempKey.indexOf('CONDITION_') == 0) { // key的值以 CONDITION_ 开头
+        tempData[key] = that.options[key];
+      }
+    }
     wx.request({
       url: url,
-      data: {
-        token: token,
-        current: that.data.currentPage + 1,
-        pageSize: that.data.pageSize,
-        filterForMember: that.options.filterForMember
-      },
+      data: tempData,
       header: {
         'content-type': 'application/json'
       },

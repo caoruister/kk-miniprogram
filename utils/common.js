@@ -75,7 +75,8 @@ var getFieldValue = function (fieldName, pageInstance) {
       let field = fields[k];
 
       if (field.name == fieldName) {
-        return field.value || '';
+        let fieldValues = pageInstance.data.fieldValues;
+        return fieldValues[field.fieldid]; // field.value || '';
       }
     }
   }
