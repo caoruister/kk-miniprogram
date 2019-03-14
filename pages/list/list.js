@@ -76,8 +76,14 @@ Page({
           var data = res.data.root;// 接口相应的json数据
           var records = data.records; // 接口中的data对应了一个数组，这里取名为 records
 
+          var title = null;
+          if (that.options.title != null && that.options.title != '') {
+            title = that.options.title;
+          } else {
+            title = data.tabLabel;
+          }
           wx.setNavigationBarTitle({
-            title: data.tabLabel
+            title: title
           });
 
           var showedFields = data.showedFields;

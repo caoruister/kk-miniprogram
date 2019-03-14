@@ -32,7 +32,7 @@ var onClick2 = function (pageInstance) {
   wx.setStorageSync('__cpk.info__', JSON.stringify(info));
 
   wx.navigateTo({
-    url: '/pages/add/add?objid=2C904B72686017330168797345410283&layoutid=2C904B72692E41DB01692E4786C9006A&notNeedLogin=true&navigateBackDelta=2'
+    url: '/pages/add/add?objid=2C904B72686017330168797345410283&layoutid=2C904B7269711BF3016971C144CE0109&notNeedLogin=true&navigateBackDelta=2'
   })
 }
 
