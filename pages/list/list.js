@@ -58,12 +58,22 @@ Page({
     })
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     var url = common.URP_PREFIX + 'record?op=searchRecords';
-    var tempData = {
-      token: token,
-      objid: that.options.objid,
-      MEMBER_FIELD_NAME: that.options.MEMBER_FIELD_NAME,
-      notNeedLogin: that.options.notNeedLogin
-    };
+    var tempData = null;
+    if (that.options.MEMBER_FIELD_NAME != null) {
+      tempData = {
+        token: token,
+        objid: that.options.objid,
+        MEMBER_FIELD_NAME: that.options.MEMBER_FIELD_NAME,
+        notNeedLogin: that.options.notNeedLogin
+      };
+    } else {
+      tempData = {
+        token: token,
+        objid: that.options.objid,
+        notNeedLogin: that.options.notNeedLogin
+      };
+    }
+    
     for (var key in that.options) {
       var tempKey = key.toString();
       if (tempKey.indexOf('CONDITION_') == 0) { // key的值以 CONDITION_ 开头
@@ -124,7 +134,7 @@ Page({
               url: '../../pages/login/login'
             })
           } else {
-            common.alert(data.msg);
+            common.alert(res.data.msg);
           }
         }
       }
@@ -139,13 +149,24 @@ Page({
     })
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     var url = common.URP_PREFIX + 'record?op=searchRecords&objid=' + that.options.objid;
-    var tempData = {
-      token: token,
-      current: that.data.currentPage + 1,
-      pageSize: that.data.pageSize,
-      MEMBER_FIELD_NAME: that.options.MEMBER_FIELD_NAME,
-      notNeedLogin: that.options.notNeedLogin
-    };
+    var tempData = null;
+    if (that.options.MEMBER_FIELD_NAME != null) {
+      tempData = {
+        token: token,
+        current: that.data.currentPage + 1,
+        pageSize: that.data.pageSize,
+        MEMBER_FIELD_NAME: that.options.MEMBER_FIELD_NAME,
+        notNeedLogin: that.options.notNeedLogin
+      };
+    } else {
+      tempData = {
+        token: token,
+        current: that.data.currentPage + 1,
+        pageSize: that.data.pageSize,
+        notNeedLogin: that.options.notNeedLogin
+      };
+    }
+    
     for (var key in that.options) {
       var tempKey = key.toString();
       if (tempKey.indexOf('CONDITION_') == 0) { // key的值以 CONDITION_ 开头
