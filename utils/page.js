@@ -97,7 +97,20 @@ var onLoadOfPage5 = function (pageInstance) {
   }
 }
 
-var onLoadOfPage6 = function (pageInstance) {}
+var onLoadOfPage6 = function (pageInstance) {
+var info = wx.getStorageSync('__dd.info__');
+console.log(info);
+if (info != null && info != '') {
+  info = JSON.parse(info);
+  //
+  pageInstance.setFieldValue('sqtkje', info.yjjg); // 将  押金金额 设置给 申请退款金额
+  pageInstance.setFieldValue('ddbh', {
+    id: info.id,
+    name: info.ddbh
+  });
+}
+}
+
 var onLoadOfPage7 = function (pageInstance) {}
 var onLoadOfPage8 = function (pageInstance) {}
 var onLoadOfPage9 = function (pageInstance) {}

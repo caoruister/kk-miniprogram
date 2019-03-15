@@ -64,6 +64,19 @@ pageInstance.submitSave(callbackWhenSuccss);
 }
 
 var onClick5 = function (pageInstance) {
+let info = {
+    id: pageInstance.getId(),
+    yjjg: pageInstance.getFieldValue('yjjg'),
+    ddbh: pageInstance.getFieldValue('name'),
+}
+wx.setStorageSync('__dd.info__', JSON.stringify(info));
+
+wx.navigateTo({
+    url: '/pages/add/add?objid=2C904B726860173301687DDCE24E02FC&layoutid=2C904B7269806A7A0169809414FF0084&title=申请退款&navigateBackDelta=3'
+})
+}
+
+var onClick6 = function (pageInstance) {
 var info = wx.getStorageSync('__cpk.info__');
 console.log(info);
 let reletDevice = false; // 是否为  设备续租
@@ -80,7 +93,7 @@ if (reletDevice == false) {
     let callbackWhenSuccss = function(id) {
         common.alert('订单生成成功', function () {
             wx.redirectTo({
-            url: '/pages/view/view?objid=2C904B72686017330168797345410283&id=' + id + '&layoutid=2C904B72697209B301697212BF84001A&showLayoutName=true&navigateBackDelta=3'
+                url: '/pages/view/view?objid=2C904B72686017330168797345410283&id=' + id + '&layoutid=2C904B72697209B301697212BF84001A&showLayoutName=true&navigateBackDelta=3'
             })
         });
     }
@@ -90,7 +103,7 @@ if (reletDevice == false) {
         if (data.success) {
             common.alert('订单生成成功', function () {
                 wx.redirectTo({
-                url: '/pages/view/view?objid=2C904B72686017330168797345410283&id=' + data.id + '&layoutid=2C904B72697209B301697212BF84001A&showLayoutName=true&navigateBackDelta=3'
+                    url: '/pages/view/view?objid=2C904B72686017330168797345410283&id=' + data.id + '&layoutid=2C904B72697209B301697212BF84001A&showLayoutName=true&navigateBackDelta=3'
                 })
             });
         } else {
@@ -102,16 +115,16 @@ if (reletDevice == false) {
         }
     }
 
-  var ksrq = pageInstance.getFieldValue('ksrq');
-  var jzrq = pageInstance.getFieldValue('jzrq');
-  console.log('ksrq=' + ksrq);
-  console.log('jzrq=' + jzrq);
+    var ksrq = pageInstance.getFieldValue('ksrq');
+    var jzrq = pageInstance.getFieldValue('jzrq');
+    console.log('ksrq=' + ksrq);
+    console.log('jzrq=' + jzrq);
     if (ksrq == null || ksrq == '') {
-        alert('请输入开始日期');
+        alert('请输入开始日期 ');
         return;
     }
     if (jzrq == null || jzrq == '') {
-        alert('请输入截止日期');
+        alert('请输入截止日期 ');
         return;
     }
     callInterface('reletDevice', {
@@ -123,7 +136,7 @@ if (reletDevice == false) {
 }
 }
 
-var onClick6 = function (pageInstance) {
+var onClick7 = function (pageInstance) {
 // 调用支付接口（以后改成 直接触发器 第三方支付，支付成功之后再调用支付接口）
 let callbackWhenSuccess = function(data) {
     if (data.success) {
@@ -148,7 +161,7 @@ callInterface('payOrder', {
 }, callbackWhenSuccess);
 }
 
-var onClick7 = function (pageInstance) {
+var onClick8 = function (pageInstance) {
   let info = {
     id: pageInstance.getId(),
     name: pageInstance.getFieldValue('cpmc'),
@@ -165,7 +178,6 @@ var onClick7 = function (pageInstance) {
   })
 }
 
-var onClick8 = function (pageInstance) {}
 var onClick9 = function (pageInstance) {}
 var onClick10 = function (pageInstance) {}
 var onClick11 = function (pageInstance) {}

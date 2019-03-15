@@ -61,6 +61,7 @@ Page({
     var tempData = {
       token: token,
       objid: that.options.objid,
+      MEMBER_FIELD_NAME: that.options.MEMBER_FIELD_NAME,
       notNeedLogin: that.options.notNeedLogin
     };
     for (var key in that.options) {
@@ -142,7 +143,7 @@ Page({
       token: token,
       current: that.data.currentPage + 1,
       pageSize: that.data.pageSize,
-      filterForMember: that.options.filterForMember,
+      MEMBER_FIELD_NAME: that.options.MEMBER_FIELD_NAME,
       notNeedLogin: that.options.notNeedLogin
     };
     for (var key in that.options) {
