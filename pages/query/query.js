@@ -161,7 +161,7 @@ Page({
       })
     }
     
-    var url = common.URP_PREFIX + 'record?op=lookupObjShowedFieldid';
+    var url = common.URP_PREFIX + 'record?op=getlookupObjShowedFieldValue';
     var oThis = this;
     wx.request({
       url: url,
@@ -172,59 +172,27 @@ Page({
       data: {
         token: token,
         objid: oThis.options.objid,
-        id: event.currentTarget.dataset.id
+        id: event.currentTarget.dataset.id,
+        lookupObjShowedFieldid: oThis.options.lookupObjShowedFieldid,
       },
-      success: function (response) {
-        console.log(response)
-        /*
-        let data = response.data;
-        if (data.success) {
-          let sections = data.sections;
-          //
-          let fieldValues = {}, fieldOptions = {};
-          for (var i = 0; i < sections.length; i++) {
-            let section = sections[i];
-            let fields = section.fields;
-            for (var k = 0; k < fields.length; k++) {
-              let field = fields[k];
+      success: function (res) {
+        console.log(res)
 
-              fieldValues[field.fieldid] = field.value;
-              if (field.type == "L") {
-                for (var j in field.options) {
-                  if (field.options[j].value == field.value) {
-                    fieldValues[field.fieldid] = j;
-                  }
-                }
-
-                fieldOptions[field.fieldid] = field.options;
-              }
-            }
-          }
-          // console.log(fieldValues);
-          //
-          oThis.setData({
-            objid: data.objid,
-            objLabel: data.objLabel,
-            layoutid: data.layoutid,
-            id: data.id,
-            sections: sections,
-            fieldValues: fieldValues,
-            fieldOptions: fieldOptions
-          })
-
-          wx.setNavigationBarTitle({
-            title: "编辑" + data.objLabel
+        var data = res.data.root; // 接口相应的json数据
+        if (res.data.success) {
+          var pages = getCurrentPages();
+          //获取上一个页面的page对象
+          var prev = pages[pages.length - 2];   // 注意空索引校验
+          //然后就可以通过操作当前页一样操作上一个页面的data对象了
+          prev.setData({
+            lookupObjShowedFieldid: oThis.options.lookupObjShowedFieldid,
+            lookupObjShowedFieldValue: data.lookupObjShowedFieldValue
           });
-        } else {
-          if (data.msg === '未登录') {
-            wx.redirectTo({
-              url: '../../pages/login/login'
-            })
-          } else {
-            common.alert(data.msg);
-          }
-          return null;
-        }*/
+
+          wx.navigateBack({
+            delta: 1  // 返回上一级页面。
+          })
+        }
       },
       fail: function (response) {
         console.error(response);

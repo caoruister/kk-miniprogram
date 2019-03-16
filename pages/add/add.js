@@ -12,7 +12,9 @@ Page({
     layoutid: '',
     buttons: [],
     sections: [],
-    options: {}
+    options: {},
+    lookupObjShowedFieldid: '',
+    lookupObjShowedFieldValue: ''
   },
   onLoad(options) {
     let oThis = this;
@@ -42,6 +44,8 @@ Page({
         this.getData(token);
       }
     }
+
+    this.setFieldValue(this.lookupObjShowedFieldid, this.lookupObjShowedFieldValue);
   },
   onReady() {
   },
