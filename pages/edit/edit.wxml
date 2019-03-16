@@ -23,6 +23,10 @@
 
                   <!-- <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value.name}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'Y'}}" /> -->
 
+                  <view class="weui-cell__ft weui-switch">
+                        <switch checked color='#4182e6' type='switch' bindchange="bindSwitchChange" id="{{field.fieldid}}" wx:if="{{field.type == 'B'}}"/>
+                    </view>
+
                   <navigator url="/pages/query/query?objid={{field.lookupObjid}}" class="weui-cell_access" hover-class="weui-cell_active" wx:if="{{field.type == 'Y'}}">
           <view class="weui-select weui-select_in-select-after">请选择</view>
         </navigator>

@@ -25,10 +25,27 @@
 
                     <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'N'}}" />
 
-                    <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" password placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'enc' || field.type == 'ENC'}}" />
+                    <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" password placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'enc' || field.type == 'ENC'}}"
+                    />
 
-                    <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value.name}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'Y'}}" />
+                    <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'H'}}" />
 
+                    <!-- <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value.name}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'Y'}}" /> -->
+
+                    <navigator url="/pages/query/query?objid={{field.lookupObjid}}" class="weui-cell_access" hover-class="weui-cell_active" wx:if="{{field.type == 'Y'}}">
+                      <view class="weui-select weui-select_in-select-after">请选择</view>
+                    </navigator>
+
+                    <!-- <checkbox-group bindchange="checkboxChange" wx:if="{{field.type == 'H''}}">
+                      <label class="checkbox" wx:for="{{items}}">
+                        <checkbox value="{{item.name}}" checked="{{item.checked}}" /> {{item.value}}
+                      </label>
+                    </checkbox-group>-->
+
+                    <view class="weui-cell__ft weui-switch">
+                        <switch checked color='#4182e6' type='switch' bindchange="bindSwitchChange" id="{{field.fieldid}}" wx:if="{{field.type == 'B'}}"/>
+                    </view>
+                  
                     <picker bindchange="bindSelectChange" id="{{field.fieldid}}" value="{{fieldValues[field.fieldid]}}" range="{{field.options}}" range-key="value" wx:if="{{field.type == 'L'}}">
                       <view class="weui-select weui-select_in-select-after">{{field.options[fieldValues[field.fieldid]].value}}</view>
                     </picker>
@@ -67,7 +84,7 @@
         </view>
       </view>
 
-      <template is="button" data="{{ buttons: buttons }}"/>
+      <template is="button" data="{{ buttons: buttons }}" />
 
       <view class="weui-btn-area" wx:if="{{buttons.length == 0}}">
         <button class="weui-btn" type="primary" formType="submit">确定</button>

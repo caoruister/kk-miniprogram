@@ -1,0 +1,3 @@
+.weui-switch {
+  padding-right: 20rpx;
+}

@@ -133,6 +133,14 @@ Page({
       fieldValues: fieldValues,
     })
   },
+  bindSwitchChange: function(e) {
+    let id = e.target.id;
+    let fieldValues = this.data.fieldValues;
+    fieldValues[id] = e.detail.value;
+    this.setData({
+      fieldValues: fieldValues,
+    })
+  },
   save: function (e) {
     this.submitSave();
   },
