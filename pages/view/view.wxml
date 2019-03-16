@@ -16,7 +16,10 @@
                   <view class="weui-label" wx:if="{{!field.hideLabel}}">{{field.label}}:</view>
                 </view>
                 <view class="weui-cell__bd">
-                  <view wx:if="{{field.type != 'IMG'}}">
+                  <view wx:if="{{field.type == 'B'}}">
+                      <switch disabled checked="{{field.value == '1'}}" color='#4182e6' type='switch'/>
+                  </view>
+                  <view wx:if="{{field.type != 'IMG' && field.type != 'B'}}">
                     <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
                   </view>
                   <view wx:else class="view-img">

@@ -32,8 +32,8 @@
 
                     <!-- <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value.name}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'Y'}}" /> -->
 
-                    <navigator url="/pages/query/query?objid={{field.lookupObjid}}&lookupObjShowedFieldid={{field.lookupObjShowedFieldid}}" class="weui-cell_access" hover-class="weui-cell_active" wx:if="{{field.type == 'Y'}}">
-                      <view class="weui-select weui-select_in-select-after">{{lookupObjShowedFieldValue || '请选择'}}</view>
+                    <navigator url="/pages/query/query?objid={{field.lookupObjid}}&lookupObjShowedFieldid={{field.lookupObjShowedFieldid}}&lookupObjShowedFieldName={{field.lookupObjShowedFieldName}}" class="weui-cell_access" hover-class="weui-cell_active" wx:if="{{field.type == 'Y'}}">
+                      <view class="weui-select weui-select_in-select-after">{{field.value2 || '请选择'}}</view>
                     </navigator>
 
                     <!-- <checkbox-group bindchange="checkboxChange" wx:if="{{field.type == 'H''}}">

@@ -101,7 +101,8 @@ Page({
       url: url,
       data: {
         token: token,
-        objid: that.options.objid
+        objid: that.options.objid,
+        MEMBER_FIELD_NAME: 'auto'
       },
       header: {
         'content-type': 'application/json'
@@ -140,7 +141,7 @@ Page({
             })
           }
         } else {
-          if (data.msg === '未登录') {
+          if (res.data.msg === '未登录') {
             wx.redirectTo({
               url: '../../pages/login/login'
             })
@@ -184,10 +185,11 @@ Page({
           //获取上一个页面的page对象
           var prev = pages[pages.length - 2];   // 注意空索引校验
           //然后就可以通过操作当前页一样操作上一个页面的data对象了
-          prev.setData({
-            lookupObjShowedFieldid: oThis.options.lookupObjShowedFieldid,
-            lookupObjShowedFieldValue: data.lookupObjShowedFieldValue
-          });
+          console.log('lookupObjShowedFieldName=' + oThis.options.lookupObjShowedFieldName);
+          prev.setFieldValue(oThis.options.lookupObjShowedFieldName, {
+			      id: oThis.options.lookupObjShowedFieldid,
+			      name: data.lookupObjShowedFieldValue
+		      });
 
           wx.navigateBack({
             delta: 1  // 返回上一级页面。

@@ -12,9 +12,7 @@ Page({
     layoutid: '',
     buttons: [],
     sections: [],
-    options: {},
-    lookupObjShowedFieldid: '',
-    lookupObjShowedFieldValue: ''
+    options: {}
   },
   onLoad(options) {
     let oThis = this;
@@ -32,6 +30,8 @@ Page({
     });
   },
   onShow() {
+  },
+  onReady() {
     if (this.options.notNeedLogin == 'true') {
       this.getData(token);
     } else {
@@ -44,10 +44,6 @@ Page({
         this.getData(token);
       }
     }
-
-    this.setFieldValue(this.lookupObjShowedFieldid, this.lookupObjShowedFieldValue);
-  },
-  onReady() {
   },
   getData: function (token) {
     var url = common.URP_PREFIX + 'record?op=getLayoutForAdding';
