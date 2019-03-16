@@ -28,7 +28,7 @@
                     <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" password placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'enc' || field.type == 'ENC'}}"
                     />
 
-                    <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'H'}}" />
+                    <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 11}}" wx:if="{{field.type == 'H'}}" />
 
                     <!-- <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" value="{{field.value.name}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" wx:if="{{field.type == 'Y'}}" /> -->
 
@@ -43,7 +43,7 @@
                     </checkbox-group>-->
 
                     <view class="weui-cell__ft weui-switch">
-                        <switch checked color='#4182e6' type='switch' bindchange="bindSwitchChange" id="{{field.fieldid}}" wx:if="{{field.type == 'B'}}"/>
+                        <switch checked="{{field.value == '1'}}" color='#4182e6' type='switch' bindchange="bindSwitchChange" id="{{field.fieldid}}" wx:if="{{field.type == 'B'}}"/>
                     </view>
                   
                     <picker bindchange="bindSelectChange" id="{{field.fieldid}}" value="{{fieldValues[field.fieldid]}}" range="{{field.options}}" range-key="value" wx:if="{{field.type == 'L'}}">
