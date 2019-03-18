@@ -55,8 +55,8 @@ function Base64() {
 
 Page({
   data: {
-    username: 'zs',
-    password: '1',
+    username: '',
+    password: '',
   },
   bindUsername: function (e) {
     this.setData({
