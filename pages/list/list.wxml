@@ -10,8 +10,11 @@
               <view class="weui-form-preview__item" wx:for="{{showedFields}}" wx:for-item="field" wx:key="*this">
                 <view class="weui-form-preview__label">{{field.label}}:</view>
                 <view class="weui-form-preview__value">
-                  <text decode="true" wx:if="{{field.type != 'B'}}">{{record[field.name] || ' '}}&nbsp;</text>
+                  <text decode="true" wx:if="{{field.type != 'B' && field.type != 'IMG'}}">{{record[field.name] || ' '}}&nbsp;</text>
                   <switch disabled checked="{{record[field.name] == '1'}}" color='#4182e6' type='switch' wx:if="{{field.type == 'B'}}"/>
+                  <view class="view-img" wx:for="{{record[field.name]}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index" wx:if="{{field.type == 'IMG'}}">
+                    <image mode="scaleToFill" src="{{FILE_URL_PREFIX + item.thumbnail_url}}"></image>
+                  </view>
                 </view>
               </view>
             </view>

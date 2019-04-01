@@ -2,8 +2,9 @@
 
 // URP_PREFIX: 'http://192.168.15.154:8080/xcx2c/',
 // URP_PREFIX: 'https://xcx-dev-1.xhx2018.cn:8443/xcx2c/',
-// var URP_PREFIX = 'http://localhost:8080/xcx2c/';
-// var FILE_URL_PREFIX = 'http://localhost:8080/file/';
+// var URP_PREFIX = 'http://192.168.3.43:8080/xcx2c/';
+// var FILE_URL_PREFIX = 'http://192.168.3.43:8080/file/';
+
 var URP_PREFIX = 'https://www.smglpt.com/xcx2c/';
 var FILE_URL_PREFIX = 'https://www.smglpt.com/file/';
 

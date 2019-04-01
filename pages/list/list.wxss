@@ -27,3 +27,14 @@
   text-align: left;
   font-size: 16px;
 }
+
+.view-img {
+  width: 150rpx;
+  height: 150rpx;
+  margin:20rpx;
+}
+
+.view-img image{
+  width: 100%;
+  height: 100%
+}

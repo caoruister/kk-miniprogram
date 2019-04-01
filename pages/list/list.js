@@ -10,7 +10,8 @@ Page({
     total: 0,
     hasMoreData: true,
     options: {},
-    canAnd: false
+    canAnd: false,
+    FILE_URL_PREFIX: common.FILE_URL_PREFIX
   },
   onPullDownRefresh: function () {
   },
@@ -82,7 +83,7 @@ Page({
     }
     wx.request({
       url: url,
-        data: tempData,
+      data: tempData,
       header: {
         'content-type': 'application/json'
       },

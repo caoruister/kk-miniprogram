@@ -2,7 +2,6 @@
   width: 150rpx;
   height: 150rpx;
   margin:20rpx;
-
 }
 
 .view-img image{

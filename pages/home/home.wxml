@@ -7,7 +7,7 @@
 <view class="page">
   <view class="page__bd">
     <block wx:for="{{items}}" wx:key="template.path" wx:for-item="template">
-      <template is="{{template.templateType}}" data="{{items: template.data, style: 'height:'+template.bottomSeparatorHeight+';background-color:'+template.bottomSeparatorColor, sectionTitle: template.sectionTitle, hideSectionTitle: template.hideSectionTitle}}" wx:if="{{template.show}}"/>
+      <template is="{{template.templateType}}" data="{{columnCount: template.columnCount, items: template.data, style: 'height:'+template.bottomSeparatorHeight+';background-color:'+template.bottomSeparatorColor, sectionTitle: template.sectionTitle, hideSectionTitle: template.hideSectionTitle}}" wx:if="{{template.show}}"/>
     </block>
   </view>
 </view>

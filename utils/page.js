@@ -20,6 +20,26 @@ var onLoadOfPage1 = function (pageInstance) {
     pageInstance.setFieldValue('yjjg', info.yjjg);
     pageInstance.setFieldValue('cpsm', info.cpsm);
     pageInstance.setFieldValue('cplx', info.cplx);
+
+    // 调用支付接口（以后改成 直接触发器 第三方支付，支付成功之后再调用支付接口）
+    let callbackWhenSuccess = function (data) {
+      if (data.success) {
+        console.log(data);
+        pageInstance.setFieldValue('shr', {
+          id: data.id,
+          name: data.shr // 收货人
+        });
+      } else {
+        if (data.msg != null) {
+          alert(data.msg);
+        } else {
+          alert('操作失败');
+        }
+      }
+    }
+
+    callInterface('getDefaultDeliveryAddress', {
+    }, callbackWhenSuccess);
   }
 }
 
@@ -57,6 +77,26 @@ if (info != null && info != '') {
   pageInstance.setFieldValue('yjjg', info.yjjg);
   pageInstance.setFieldValue('cpsm', info.cpsm);
   pageInstance.setFieldValue('cplx', info.cplx);
+
+    // 调用支付接口（以后改成 直接触发器 第三方支付，支付成功之后再调用支付接口）
+    let callbackWhenSuccess = function (data) {
+      if (data.success) {
+        console.log(data);
+        pageInstance.setFieldValue('shr', {
+          id: data.id,
+          name: data.shr // 收货人
+        });
+      } else {
+        if (data.msg != null) {
+          alert(data.msg);
+        } else {
+          alert('操作失败');
+        }
+      }
+    }
+
+    callInterface('getDefaultDeliveryAddress', {
+    }, callbackWhenSuccess);
 }
 }
 
@@ -75,6 +115,26 @@ var onLoadOfPage4 = function (pageInstance) {
     pageInstance.setFieldValue('cpjg', info.cpjg);
     pageInstance.setFieldValue('yjjg', info.yjjg);
     pageInstance.setFieldValue('cpsm', info.cpsm);
+
+    // 调用支付接口（以后改成 直接触发器 第三方支付，支付成功之后再调用支付接口）
+    let callbackWhenSuccess = function (data) {
+      if (data.success) {
+        console.log(data);
+        pageInstance.setFieldValue('shr', {
+          id: data.id,
+          name: data.shr // 收货人
+        });
+      } else {
+        if (data.msg != null) {
+          alert(data.msg);
+        } else {
+          alert('操作失败');
+        }
+      }
+    }
+
+    callInterface('getDefaultDeliveryAddress', {
+    }, callbackWhenSuccess);
   }
 }
 

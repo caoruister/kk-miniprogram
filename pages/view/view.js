@@ -98,7 +98,15 @@ Page({
                   console.log(tempValue);
                   //
                   if (tempValue.length > 0) {
-                    let item = JSON.parse(tempValue[0]);
+                    let temp = tempValue[0];
+                    console.log(temp);
+                    let item = null;
+                    if (typeof (temp) == 'string') {
+                      item = JSON.parse(temp);
+                    } else {
+                      item = temp;
+                    }
+                    //
                     let thumbnail_url = common.FILE_URL_PREFIX + item.thumbnail_url;
                     console.log(thumbnail_url);
                     field.thumbnail_url = thumbnail_url;

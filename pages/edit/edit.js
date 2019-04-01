@@ -36,13 +36,13 @@ Page({
         url: '../../pages/login/login'
       })
     } else {
-      this.getData(token);
+      this.getData(token, options);
     }
   },
   onShow() {
     
   },
-  getData: function (token) {
+  getData: function (token, options) {
     var url = common.URP_PREFIX + 'record?op=getLayoutForEditing';
     var oThis = this;
     wx.request({
@@ -53,8 +53,9 @@ Page({
       },
       data: {
         token: token,
-        objid: oThis.options.objid,
-        id: oThis.options.id
+        objid: options.objid,
+        layoutid: options.layoutid,
+        id: options.id
       },
       success: function (response) {
         // console.log(response)
@@ -80,6 +81,26 @@ Page({
                 } 
 
                 fieldOptions[field.fieldid] = field.options;
+              } else if (field.type == "IMG") {
+                if (field.value != null && field.value != '') {
+                  let tempValue = JSON.parse(field.value);
+                  console.log(tempValue);
+                  //
+                  if (tempValue.length > 0) {
+                    let temp = tempValue[0];
+                    console.log(temp);
+                    let item = null;
+                    if (typeof (temp) == 'string') {
+                      item = JSON.parse(temp);
+                    } else {
+                      item = temp;
+                    }
+                    //
+                    let thumbnail_url = common.FILE_URL_PREFIX + item.thumbnail_url;
+                    console.log(thumbnail_url);
+                    field.thumbnail_url = thumbnail_url;
+                  }
+                }
               }
             }
           }
@@ -96,8 +117,18 @@ Page({
             fieldOptions: fieldOptions
           })
 
+          let title = "编辑" + data.objLabel;
+          if (options.title != null && options.title != '') {
+            title = options.title;
+          } else {
+            if (options.showLayoutName == 'true') {
+              if (data.layoutName != null && data.layoutName != '') {
+                title = data.layoutName;
+              }
+            }
+          }
           wx.setNavigationBarTitle({
-            title: "编辑" + data.objLabel
+            title: title
           });
 
           console.log(onLoadMethodName);
@@ -162,7 +193,10 @@ Page({
       for (var key in fieldValues) {
         data[key] = fieldValues[key];
         if (this.data.fieldOptions[key]) {
-          data[key] = this.data.fieldOptions[key][data[key]].value;
+          let temp = this.data.fieldOptions[key][data[key]];
+          if (temp != null) {
+            data[key] = temp.value;
+          }
         }
       }
       //
