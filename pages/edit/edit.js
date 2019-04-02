@@ -234,6 +234,34 @@ Page({
       })
     }
   },
+  chooseImage: function (e) {
+    let name = e.target.dataset.name;
+    let _this = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths);
+        var orgid = wx.getStorageSync('__orgid__');
+        wx.uploadFile({
+          url: common.FILE_URL_PREFIX + 'file', // 仅为示例，非真实的接口地址
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData: {
+            orgid: orgid
+          },
+          success(res) {
+            const data = res.data
+            // do something
+            common.setFieldValue(name, data, _this);
+          }
+        })
+      }
+    })
+  },
   onClickOfButton: function (event) {
     var methodName = event.target.dataset.methodName;
     if (methodName == 'onClick1') {

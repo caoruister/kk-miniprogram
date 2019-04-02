@@ -114,6 +114,7 @@ Page({
         if (response.data && response.data.success) {
           wx.setStorageSync('__token__', response.data.token)
           wx.setStorageSync('__token__userName', response.data.name)
+          wx.setStorageSync('__orgid__', response.data.orgid)
           wx.switchTab({
             url: '../../pages/home/home'
           })
