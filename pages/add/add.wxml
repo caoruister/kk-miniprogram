@@ -33,12 +33,6 @@
                       <view class="weui-select weui-select_in-select-after">{{field.value2 || '请选择'}}</view>
                     </navigator>
 
-                    <view wx:if="{{field.type == 'IMG'}}" class="view-img">
-                      <image mode="scaleToFill" src="{{field.thumbnail_url}}"></image>
-
-                       <view class="weui-select weui-select_in-select-after"></view>
-                    </view>
-
                     <view class="weui-cell__ft weui-switch">
                         <switch checked="{{field.value == '1'}}" color='#4182e6' type='switch' bindchange="bindSwitchChange" id="{{field.fieldid}}" wx:if="{{field.type == 'B'}}"/>
                     </view>

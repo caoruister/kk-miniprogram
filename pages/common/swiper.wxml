@@ -6,13 +6,11 @@
       <swiper indicator-dots="true" autoplay="true" interval="2000" duration="500">
         <block wx:for="{{items}}" wx:key="*this">
           <swiper-item>
-              <image bindtap="chooseImage" class="swiper-item" mode="scaleToFill" src="{{item.imageUrl}}"></image>
-
-            <!--
+          
             <navigator url="{{item.path}}?weburl={{item.webviewUrl}}">
               <image class="swiper-item" mode="scaleToFill" src="{{item.imageUrl}}"></image>
             </navigator>
-            -->
+
           </swiper-item>
         </block>
       </swiper>
