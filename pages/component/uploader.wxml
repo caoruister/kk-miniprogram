@@ -1,0 +1,27 @@
+<!--pages/component/uploader.wxml-->
+<view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <!--头部信息  -->
+          <view class="weui-uploader__hd" wx:if="{{!hideHeader}}">
+            <view class="weui-uploader__title">{{headerTitle}}</view>
+            <view class="weui-uploader__info">{{files.length}}/{{imageCount}}</view>
+          </view>
+          <!-- 功能区域 -->
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files" id="uploaderFiles">
+              <block wx:for="{{files}}" wx:key="*this">
+                <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                  <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                </view>
+              </block>
+            </view>
+            <view class="weui-uploader__input-box" wx:if="{{files.length<imageCount}}">
+              <view class="weui-uploader__input" bindtap="chooseImage"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>

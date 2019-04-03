@@ -2,11 +2,11 @@
 
 // URP_PREFIX: 'http://192.168.15.154:8080/xcx2c/',
 // URP_PREFIX: 'https://xcx-dev-1.xhx2018.cn:8443/xcx2c/',
-// var URP_PREFIX = 'http://192.168.3.43:8080/xcx2c/';
-// var FILE_URL_PREFIX = 'http://192.168.3.43:8080/file/';
+var URP_PREFIX = 'http://192.168.3.43:8080/xcx2c/';
+var FILE_URL_PREFIX = 'http://192.168.3.43:8080/file/';
 
-var URP_PREFIX = 'https://www.smglpt.com/xcx2c/';
-var FILE_URL_PREFIX = 'https://www.smglpt.com/file/';
+//var URP_PREFIX = 'https://www.smglpt.com/xcx2c/';
+//var FILE_URL_PREFIX = 'https://www.smglpt.com/file/';
 
 // 显示成功提示
 var showSuccess = text => wx.showToast({
@@ -51,6 +51,21 @@ var setFieldValue = function (fieldName, value, pageInstance) {
         console.log(value);
         if (field.type == 'Y') {
           field.value2 = (value != null ? value.name : null);
+        }  else if (field.type == 'IMG') {
+          let tempValue = JSON.parse(value);
+          //
+          if (tempValue.length > 0) {
+            let temp = tempValue[0];
+            let item = null;
+            if (typeof (temp) == 'string') {
+              item = JSON.parse(temp);
+            } else {
+              item = temp;
+            }
+            //
+            let thumbnail_url = FILE_URL_PREFIX + item.thumbnail_url;
+            field.thumbnail_url = thumbnail_url;
+          }
         }
         //
         field.value = value;
@@ -128,6 +143,25 @@ var callInterface = function (apiName, data, callbackWhenSuccess) {
   })
 }
 
+var uploadFile = (tempFilePath, success, fail) => {
+  let filename = tempFilePath.substr(tempFilePath.lastIndexOf('/') + 1);
+  let url = FILE_URL_PREFIX + 'file';
+  console.log("上传信息" + JSON.stringify({ "url": url, "tempFilePath": tempFilePath, "filename": filename }))
+  wx.uploadFile({
+    url: url,
+    filePath: tempFilePath,
+    name: 'Filedata',
+    formData: {
+    },
+    success: function (res) {
+      success && success(res)
+    },
+    fail: function (res) {
+      fail && fail(res)
+    }
+  })
+}
+
 module.exports = {
   URP_PREFIX: URP_PREFIX,
   FILE_URL_PREFIX: FILE_URL_PREFIX,
@@ -135,5 +169,6 @@ module.exports = {
   alert: alert,
   setFieldValue: setFieldValue,
   getFieldValue: getFieldValue,
-  callInterface: callInterface
+  callInterface: callInterface,
+  uploadFile: uploadFile
 }
