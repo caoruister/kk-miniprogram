@@ -1,0 +1,37 @@
+<template name="number">
+  <block wx:if="{{!field.column}}">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label" wx:if="{{!field.hideLabel}}">
+          <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:</view>
+      </view>
+
+      <view class="weui-cell__bd">
+        <view wx:if="{{!field.readOnly}}">
+          <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{field.value}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" />
+        </view>
+        <view wx:else>
+          <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="weui-cells__title" wx:if="{{!field.hideLabel}}">
+      <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:
+    </view>
+
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <view wx:if="{{!field.readOnly}}">
+            <input class="weui-input" bindinput="bindField" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{field.value}}" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" maxlength="{{field.length || 10}}" />
+          </view>
+          <view wx:else>
+            <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</template>

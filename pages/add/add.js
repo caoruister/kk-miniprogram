@@ -118,6 +118,15 @@ Page({
     })
   },
   bindField: function (e) {
+    /*let id = e.target.id;
+    let fieldValues = this.data.fieldValues;
+    fieldValues[id] = e.detail.value;
+    this.setData({
+      fieldValues: fieldValues,
+    })*/
+    common.setFieldValue(e.target.dataset.name, e.detail.value, this);
+  },
+  bindSelectChange: function(e) {
     let id = e.target.id;
     let fieldValues = this.data.fieldValues;
     fieldValues[id] = e.detail.value;
@@ -125,7 +134,7 @@ Page({
       fieldValues: fieldValues,
     })
   },
-  bindSelectChange: function(e) {
+  radioChange: function (e) {
     let id = e.target.id;
     let fieldValues = this.data.fieldValues;
     fieldValues[id] = e.detail.value;

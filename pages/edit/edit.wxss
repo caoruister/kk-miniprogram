@@ -1,10 +1,21 @@
 .image-avatar {
-  width: 80rpx;
-  height: 80rpx;
+  width: 70rpx;
+  height: 70rpx;
   border-radius: 50%;
   overflow: hidden;
+  vertical-align: middle;
 }
 
 .readonly {
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
+}
+
+.weui-cells__title {
+  color: #999;
+}
+.weui-label {
+  color: #999;
+}
+.weui-switch {
+  padding-right: 20rpx;
 }

@@ -1,0 +1,18 @@
+<template name="textarea">
+  <view class="weui-cells__title" wx:if="{{!field.hideLabel}}">
+    <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view wx:if="{{!field.readOnly}}">
+          <textarea class="weui-textarea" bindinput="bindField" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{field.value}}" maxlength="{{field.length || 10}}" style="height: 3.3em" placeholder="请输入{{field.label}}{{field.hideLabel && field.required ? ' (必填)' : ''}}" />
+          <view class="weui-textarea-counter">{{field.value.length || 0}}/{{field.length}}</view>
+        </view>
+        <view wx:else>
+          <text class="weui-input readonly" decode="true">{{field.value || ''}}&nbsp;</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

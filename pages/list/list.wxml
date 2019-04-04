@@ -7,14 +7,16 @@
         <block wx:for="{{records}}" wx:for-item="record" wx:key="{{record.id}}" wx:for-index="index">
           <navigator class="weui-form-pre" url="{{record.canEdit ? '/pages/edit/edit?objid='+options.objid+'&id=' + record.id : (record.canView ? '/pages/view/view?' + ((options.layoutidOfViewPage != null && options.layoutidOfViewPage != '') ? ('layoutid=' + options.layoutidOfViewPage + '&') : '') + 'objid='+options.objid+'&id=' + record.id : '')}}">
             <view class="weui-form-preview__bd">
+            
               <view class="weui-form-preview__item" wx:for="{{showedFields}}" wx:for-item="field" wx:key="*this">
-                <view class="weui-form-preview__label">{{field.label}}:</view>
+                <view class="weui-form-preview__label" wx:if="{{!field.hideLabel}}">{{field.label}}:</view>
                 <view class="weui-form-preview__value">
                   <text decode="true" wx:if="{{field.type != 'B' && field.type != 'IMG'}}">{{record[field.name] || ' '}}&nbsp;</text>
                   <switch disabled checked="{{record[field.name] == '1'}}" color='#4182e6' type='switch' wx:if="{{field.type == 'B'}}"/>
+                  <!--
                   <view class="view-img" wx:for="{{record[field.name]}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index" wx:if="{{field.type == 'IMG'}}">
                     <image mode="scaleToFill" src="{{FILE_URL_PREFIX + item.thumbnail_url}}"></image>
-                  </view>
+                  </view>-->
                 </view>
               </view>
             </view>
@@ -23,6 +25,7 @@
       </block>
     </scroll-view>
   </view>
+  
 
   <view class="weui-footer weui-footer_fixed-bottom" wx:if="{{canAdd}}">
     <navigator url="{{'/pages/add/add?objid='+options.objid}}" style="float:right">

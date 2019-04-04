@@ -1,0 +1,45 @@
+<template name="date">
+  <block wx:if="{{!field.column}}">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label" wx:if="{{!field.hideLabel}}">
+          <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:</view>
+      </view>
+
+      <view class="weui-cell__bd">
+        <view wx:if="{{!field.readOnly}}">
+          <picker bindchange="bindSelectChange" mode="date" id="{{field.fieldid}}" value="{{fieldValues[field.fieldid]}}" wx:if="{{field.type == 'D'}}">
+            <view class="weui-select weui-select_in-select-after">
+              {{fieldValues[field.fieldid]}}
+            </view>
+          </picker>
+        </view>
+        <view wx:else>
+          <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="weui-cells__title" wx:if="{{!field.hideLabel}}">
+      <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:
+    </view>
+
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <view wx:if="{{!field.readOnly}}">
+            <picker bindchange="bindSelectChange" mode="date" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{fieldValues[field.fieldid]}}" wx:if="{{field.type == 'D'}}">
+              <view class="weui-select weui-select_in-select-after">
+                {{fieldValues[field.fieldid]}}
+              </view>
+            </picker>
+          </view>
+          <view wx:else>
+            <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</template>

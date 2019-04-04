@@ -1,0 +1,83 @@
+<template name="picker">
+  <block wx:if="{{!field.column}}">
+    <view wx:if="{{field.edittype == '1'}}" class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label" wx:if="{{!field.hideLabel}}">
+          <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:</view>
+      </view>
+
+      <view class="weui-cell__bd">
+        <view wx:if="{{!field.readOnly}}">
+          <picker bindchange="bindSelectChange" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{fieldValues[field.fieldid]}}" range="{{field.options}}" range-key="value" wx:if="{{field.type == 'L'}}">
+            <view class="weui-select weui-select_in-select-after">{{field.options[fieldValues[field.fieldid]].value}}</view>
+          </picker>
+        </view>
+        <view wx:else>
+          <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
+        </view>
+      </view>
+    </view>
+    <view wx:elif="{{field.edittype == '2'}}">
+      <view class="weui-cells__title" wx:if="{{!field.hideLabel}}">
+        <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+        <view wx:if="{{!field.readOnly}}">
+          <radio-group bindchange="radioChange" id="{{field.fieldid}}" data-name="{{field.name}}">
+            <label class="weui-cell weui-check__label" wx:for="{{field.options}}" wx:key="{{item.value}}">
+              <view class="weui-cell__hd">
+                <radio value="{{item.value}}" checked="{{field.value == item.value}}" />
+              </view>
+              <view class="weui-cell__bd">{{item.text}}</view>
+            </label>
+          </radio-group>
+        </view>
+        <view wx:else>
+          <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <block wx:if="{{field.edittype == '1'}}">
+      <view class="weui-cells__title" wx:if="{{!field.hideLabel}}">
+        <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:
+      </view>
+
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <view wx:if="{{!field.readOnly}}">
+              <picker bindchange="bindSelectChange" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{fieldValues[field.fieldid]}}" range="{{field.options}}" range-key="value" wx:if="{{field.type == 'L'}}">
+                <view class="weui-select weui-select_in-select-after">{{field.options[fieldValues[field.fieldid]].value}}</view>
+              </picker>
+            </view>
+            <view wx:else>
+              <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:elif="{{field.edittype == '2'}}">
+      <view class="weui-cells__title" wx:if="{{!field.hideLabel}}">
+        <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+        <view wx:if="{{!field.readOnly}}">
+          <radio-group bindchange="radioChange" id="{{field.fieldid}}" data-name="{{field.name}}">
+            <label class="weui-cell weui-check__label" wx:for="{{field.options}}" wx:key="{{item.value}}">
+              <view class="weui-cell__hd">
+                <radio value="{{item.value}}" checked="{{field.value == item.value}}" />
+              </view>
+              <view class="weui-cell__bd">{{item.text}}</view>
+            </label>
+          </radio-group>
+        </view>
+        <view wx:else>
+          <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
+        </view>
+      </view>
+    </block>
+  </block>
+</template>

@@ -1,0 +1,41 @@
+<template name="lookup">
+  <block wx:if="{{!field.column}}">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label" wx:if="{{!field.hideLabel}}">
+          <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:</view>
+      </view>
+
+      <view class="weui-cell__bd">
+        <view wx:if="{{!field.readOnly}}">
+          <navigator url="/pages/query/query?objid={{field.lookupObjid}}&lookupObjShowedFieldid={{field.lookupObjShowedFieldid}}&lookupObjShowedFieldName={{field.lookupObjShowedFieldName}}&fieldName={{field.name}}" class="weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-select weui-select_in-select-after">{{field.value2}}</view>
+          </navigator>
+        </view>
+        <view wx:else>
+          <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="weui-cells__title" wx:if="{{!field.hideLabel}}">
+      <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:
+    </view>
+
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <view wx:if="{{!field.readOnly}}">
+            <navigator url="/pages/query/query?objid={{field.lookupObjid}}&lookupObjShowedFieldid={{field.lookupObjShowedFieldid}}&lookupObjShowedFieldName={{field.lookupObjShowedFieldName}}&fieldName={{field.name}}" id="{{field.fieldid}}" data-name="{{field.name}}" class="weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-select weui-select_in-select-after">{{field.value2}}</view>
+            </navigator>
+          </view>
+          <view wx:else>
+            <text class="weui-input readonly" decode="true">{{field.value2 || field.value || ''}}&nbsp;</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</template>

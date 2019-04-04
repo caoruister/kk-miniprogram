@@ -1,3 +1,11 @@
+.image-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
 .weui-switch {
   padding-right: 20rpx;
 }

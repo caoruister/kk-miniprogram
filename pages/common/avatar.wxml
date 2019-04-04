@@ -1,0 +1,52 @@
+<template name="avatar">
+  <block wx:if="{{!field.column}}">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label" wx:if="{{!field.hideLabel}}">
+          <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view wx:if="{{!field.readOnly}}">
+          <view class="weui-cell_access" style="text-align:right">
+            <view class="weui-select weui-select_in-select-after">
+              <image class="image-avatar" bindtap="chooseImage" mode="scaleToFill" src="{{field.thumbnail_url}}" id="{{field.fieldid}}" data-name="{{field.name}}"></image>
+            </view>
+          </view>
+        </view>
+        <view wx:else class="readonly">
+          <view class="weui-cell_access" style="text-align:right">
+            <view class="weui-select weui-select_in-select-after">
+              <image class="image-avatar" mode="scaleToFill" src="{{field.thumbnail_url}}" id="{{field.fieldid}}" data-name="{{field.name}}"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="weui-cells__title" wx:if="{{!field.hideLabel}}">
+      <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:
+    </view>
+
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <view wx:if="{{!field.readOnly}}">
+            <view class="weui-cell_access" style="text-align:right">
+              <view class="weui-select weui-select_in-select-after">
+                <image class="image-avatar" bindtap="chooseImage" mode="scaleToFill" src="{{field.thumbnail_url}}" id="{{field.fieldid}}" data-name="{{field.name}}"></image>
+              </view>
+            </view>
+          </view>
+          <view wx:else>
+            <view class="weui-cell_access" style="text-align:right">
+              <view class="weui-select weui-select_in-select-after">
+                <image class="image-avatar" mode="scaleToFill" src="{{field.thumbnail_url}}" id="{{field.fieldid}}" data-name="{{field.name}}"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</template>

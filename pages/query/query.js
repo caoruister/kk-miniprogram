@@ -185,8 +185,8 @@ Page({
           //获取上一个页面的page对象
           var prev = pages[pages.length - 2];   // 注意空索引校验
           //然后就可以通过操作当前页一样操作上一个页面的data对象了
-          console.log('lookupObjShowedFieldName=' + oThis.options.lookupObjShowedFieldName);
-          prev.setFieldValue(oThis.options.lookupObjShowedFieldName, {
+          console.log('fieldName=' + oThis.options.fieldName);
+          prev.setFieldValue(oThis.options.fieldName, {
 			      id: oThis.options.lookupObjShowedFieldid,
 			      name: data.lookupObjShowedFieldValue
 		      });
