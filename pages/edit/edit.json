@@ -2,6 +2,6 @@
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "uploader": "/pages/component/uploader"
+    "uploader": "/pages/component/uploader/uploader"
   }
 }

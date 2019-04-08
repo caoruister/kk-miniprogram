@@ -1,5 +1,5 @@
 // pages/component/uploader.js
-var common = require('../../utils/common.js')
+var common = require('../../../utils/common.js')
 Component({
   options: {
     addGlobalClass: true,
