@@ -126,30 +126,6 @@ Page({
     })*/
     common.setFieldValue(e.target.dataset.name, e.detail.value, this);
   },
-  bindSelectChange: function(e) {
-    let id = e.target.id;
-    let fieldValues = this.data.fieldValues;
-    fieldValues[id] = e.detail.value;
-    this.setData({
-      fieldValues: fieldValues,
-    })
-  },
-  radioChange: function (e) {
-    let id = e.target.id;
-    let fieldValues = this.data.fieldValues;
-    fieldValues[id] = e.detail.value;
-    this.setData({
-      fieldValues: fieldValues,
-    })
-  },
-  bindSwitchChange: function(e) {
-    let id = e.target.id;
-    let fieldValues = this.data.fieldValues;
-    fieldValues[id] = e.detail.value;
-    this.setData({
-      fieldValues: fieldValues,
-    })
-  },
   save: function (e) {
     this.submitSave();
   },
@@ -166,12 +142,30 @@ Page({
       })
     } else {
       console.log(this.data.fieldValues);
+
+      //check required
+      if (!common.checkField(this)) {
+        return;
+      }
+      
       let fieldValues = this.data.fieldValues;
       let data = {
         token: token,
         objid: this.data.objid,
         layoutid: this.data.layoutid
       };
+      
+      for (var key in fieldValues) {
+        data[key] = fieldValues[key];
+        if (this.data.fieldOptions[key]) {
+          let temp = this.data.fieldOptions[key][data[key]];
+          if (temp != null) {
+            data[key] = temp.value;
+          }
+        }
+      }
+
+/*
       let fieldsMap = this.data.fieldsMap;
       for (var key in fieldValues) {
         let field = fieldsMap[key];
@@ -194,7 +188,7 @@ Page({
             data[key] = this.data.fieldOptions[key][data[key]].value;
           }
         }
-      }
+      }*/
       //
       var url = common.URP_PREFIX + 'record?op=saveRecord';
       var oThis = this;

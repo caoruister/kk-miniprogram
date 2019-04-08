@@ -8,9 +8,9 @@
 
       <view class="weui-cell__bd">
         <view wx:if="{{!field.readOnly}}">
-          <picker bindchange="bindSelectChange" mode="date" id="{{field.fieldid}}" value="{{fieldValues[field.fieldid]}}" wx:if="{{field.type == 'D'}}">
+          <picker bindchange="bindField" mode="date" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{field.value}}">
             <view class="weui-select weui-select_in-select-after">
-              {{fieldValues[field.fieldid]}}
+              {{field.value || ''}}
             </view>
           </picker>
         </view>
@@ -29,9 +29,9 @@
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__bd">
           <view wx:if="{{!field.readOnly}}">
-            <picker bindchange="bindSelectChange" mode="date" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{fieldValues[field.fieldid]}}" wx:if="{{field.type == 'D'}}">
+            <picker bindchange="bindField" mode="date" id="{{field.fieldid}}"  data-name="{{field.name}}" value="{{field.value}}">
               <view class="weui-select weui-select_in-select-after">
-                {{fieldValues[field.fieldid]}}
+                {{field.value || ''}}
               </view>
             </picker>
           </view>

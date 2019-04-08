@@ -9,6 +9,7 @@
 <import src="../../pages/common/text.wxml" />
 <import src="../../pages/common/textarea.wxml" />
 <import src="../../pages/common/avatar.wxml" />
+<import src="../../pages/common/richtext.wxml" />
 
 <view class="page">
   <view class="page__bd">
@@ -42,6 +43,8 @@
               <template is="picker" data="{{field: field,fieldValues: fieldValues}}" wx:if="{{field.type == 'L'}}"/>
 
               <template is="avatar" data="{{field: field,fieldValues: fieldValues}}" wx:if="{{field.type == 'IMG'}}"/>
+
+              <template is="richtext" data="{{field: field,fieldValues: fieldValues}}" wx:if="{{field.type == 'A'}}"/>
              
             </block>
           </view>

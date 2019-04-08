@@ -9,7 +9,7 @@
       <view class="weui-cell__bd">
         <view wx:if="{{!field.readOnly}}">
           <view class="weui-cell__ft weui-switch">
-            <switch class="weui-input" checked="{{field.value == '1'}}" color='#4182e6' type='switch' bindchange="bindSwitchChange" id="{{field.fieldid}}" />
+            <switch class="weui-input" checked="{{field.value == '1'}}" color='#4182e6' type='switch' bindchange="bindField" id="{{field.fieldid}}" />
           </view>
         </view>
         <view wx:else>
@@ -28,7 +28,7 @@
         <view class="weui-cell__bd">
           <view wx:if="{{!field.readOnly}}">
             <view class="weui-cell__ft weui-switch">
-              <switch class="weui-input" checked="{{field.value == '1'}}" color='#4182e6' type='switch' bindchange="bindSwitchChange" id="{{field.fieldid}}" data-name="{{field.name}}"/>
+              <switch class="weui-input" checked="{{field.value == '1'}}" color='#4182e6' type='switch' bindchange="bindField" id="{{field.fieldid}}" data-name="{{field.name}}"/>
             </view>
           </view>
           <view wx:else>

@@ -8,7 +8,7 @@
 
       <view class="weui-cell__bd">
         <view wx:if="{{!field.readOnly}}">
-          <picker bindchange="bindSelectChange" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{fieldValues[field.fieldid]}}" range="{{field.options}}" range-key="value" wx:if="{{field.type == 'L'}}">
+          <picker bindchange="bindField" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{fieldValues[field.fieldid]}}" range="{{field.options}}" range-key="value" wx:if="{{field.type == 'L'}}">
             <view class="weui-select weui-select_in-select-after">{{field.options[fieldValues[field.fieldid]].value}}</view>
           </picker>
         </view>
@@ -23,7 +23,7 @@
       </view>
       <view class="weui-cells weui-cells_after-title">
         <view wx:if="{{!field.readOnly}}">
-          <radio-group bindchange="radioChange" id="{{field.fieldid}}" data-name="{{field.name}}">
+          <radio-group bindchange="bindField" id="{{field.fieldid}}" data-name="{{field.name}}">
             <label class="weui-cell weui-check__label" wx:for="{{field.options}}" wx:key="{{item.value}}">
               <view class="weui-cell__hd">
                 <radio value="{{item.value}}" checked="{{field.value == item.value}}" />
@@ -48,7 +48,7 @@
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__bd">
             <view wx:if="{{!field.readOnly}}">
-              <picker bindchange="bindSelectChange" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{fieldValues[field.fieldid]}}" range="{{field.options}}" range-key="value" wx:if="{{field.type == 'L'}}">
+              <picker bindchange="bindField" id="{{field.fieldid}}" data-name="{{field.name}}" value="{{fieldValues[field.fieldid]}}" range="{{field.options}}" range-key="value" wx:if="{{field.type == 'L'}}">
                 <view class="weui-select weui-select_in-select-after">{{field.options[fieldValues[field.fieldid]].value}}</view>
               </picker>
             </view>
@@ -65,7 +65,7 @@
       </view>
       <view class="weui-cells weui-cells_after-title">
         <view wx:if="{{!field.readOnly}}">
-          <radio-group bindchange="radioChange" id="{{field.fieldid}}" data-name="{{field.name}}">
+          <radio-group bindchange="bindField" id="{{field.fieldid}}" data-name="{{field.name}}">
             <label class="weui-cell weui-check__label" wx:for="{{field.options}}" wx:key="{{item.value}}">
               <view class="weui-cell__hd">
                 <radio value="{{item.value}}" checked="{{field.value == item.value}}" />

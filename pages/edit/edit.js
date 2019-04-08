@@ -160,30 +160,6 @@ Page({
     })*/
     common.setFieldValue(e.target.dataset.name, e.detail.value, this);
   },
-  bindSelectChange: function (e) {
-    let id = e.target.id;
-    let fieldValues = this.data.fieldValues;
-    fieldValues[id] = e.detail.value;
-    this.setData({
-      fieldValues: fieldValues,
-    })
-  },
-  radioChange: function (e) {
-    let id = e.target.id;
-    let fieldValues = this.data.fieldValues;
-    fieldValues[id] = e.detail.value;
-    this.setData({
-      fieldValues: fieldValues,
-    })
-  },
-  bindSwitchChange: function (e) {
-    let id = e.target.id;
-    let fieldValues = this.data.fieldValues;
-    fieldValues[id] = e.detail.value;
-    this.setData({
-      fieldValues: fieldValues,
-    })
-  },
   save: function (e) {
     var token = wx.getStorageSync('__token__');
     if (token == null || token == '') {
@@ -192,6 +168,12 @@ Page({
       })
     } else {
       // console.log(this.data.fieldValues);
+
+      //check required
+      if (!common.checkField(this)) {
+        return;
+      }
+
       let fieldValues = this.data.fieldValues;
       let data = {
         token: token,
@@ -222,7 +204,7 @@ Page({
           // console.log(response)
           let data = response.data;
           if (data.success) {
-            common.alert('保存成功', function(){
+            common.showSuccess('保存成功', function(){
               wx.navigateBack({
                 delta: 1
               });
