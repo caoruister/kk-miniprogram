@@ -5,6 +5,7 @@
         <view class="weui-label" wx:if="{{!field.hideLabel}}">
           <text class="required" wx:if="{{field.required && !field.readOnly}}">*</text>{{field.label}}:</view>
       </view>
+      
       <view class="weui-cell__bd">
         <view wx:if="{{!field.readOnly}}">
           <view class="weui-cell_access" style="text-align:right">

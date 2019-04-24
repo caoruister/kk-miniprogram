@@ -206,7 +206,7 @@ Page({
             if (callbackWhenSuccss != null) {
               callbackWhenSuccss(data.id);
             } else {
-              common.alert('保存成功', function () {
+              common.showSuccess('保存成功', function () {
                 console.log(navigateBackDelta);
                 wx.navigateBack({
                   delta: parseInt(navigateBackDelta.toString())

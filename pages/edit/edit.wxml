@@ -47,12 +47,12 @@
         </view>
       </view>
 
-      <!--      <uploader/>-->
+           <!-- <uploader/> -->
 
 
       <template is="button" data="{{ buttons: buttons }}" />
 
-      <view class="weui-btn-area" wx:if="{{buttons.length == 0}}">
+      <view class="weui-btn-area" wx:if="{{buttons.length !== 0}}">
         <button class="weui-btn" type="primary" formType="submit">确定</button>
       </view>
 

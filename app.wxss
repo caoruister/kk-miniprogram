@@ -131,3 +131,11 @@ swiper {
 .readonly {
   font-weight: bold;
 }
+
+.image-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  vertical-align: middle;
+}

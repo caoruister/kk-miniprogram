@@ -82,6 +82,7 @@ Page({
 
                 fieldOptions[field.fieldid] = field.options;
               } else if (field.type == "IMG") {
+                /*
                 if (field.value != null && field.value != '') {
                   let tempValue = JSON.parse(field.value);
                   console.log(tempValue);
@@ -100,7 +101,7 @@ Page({
                     console.log(thumbnail_url);
                     field.thumbnail_url = thumbnail_url;
                   }
-                }
+                }*/
               }
             }
           }

@@ -2,17 +2,24 @@
 
 // URP_PREFIX: 'http://192.168.15.154:8080/xcx2c/',
 // URP_PREFIX: 'https://xcx-dev-1.xhx2018.cn:8443/xcx2c/',
-var URP_PREFIX = 'http://192.168.3.43:8080/xcx2c/';
-var FILE_URL_PREFIX = 'http://192.168.3.43:8080/file/';
+// var URP_PREFIX = 'http://192.168.3.43:8080/xcx2c/';
+// var FILE_URL_PREFIX = 'http://192.168.3.43:8080/file/';
 
-//var URP_PREFIX = 'https://www.smglpt.com/xcx2c/';
-//var FILE_URL_PREFIX = 'https://www.smglpt.com/file/';
+var URP_PREFIX = 'https://kkdev.kz-info.cn:9243/kkdev-xcx2c/';
+var FILE_URL_PREFIX = 'https://kkdev.kz-info.cn:9243/kkdev-file/';
 
 // 显示成功提示
-var showSuccess = text => wx.showToast({
-  title: text,
-  icon: 'success'
-})
+var showSuccess = (content, callback) => { 
+  wx.showToast({
+    title: content,
+    icon: 'success',
+    duration: 2000,
+    mask: true,
+    success: function() {
+      callback && callback();
+    }
+  })
+}
 
 // 显示失败提示
 var alert = (content, callback) => {
@@ -98,6 +105,23 @@ var getFieldValue = function (fieldName, pageInstance) {
   }
 }
 
+var checkField = function (pageInstance) {
+  var sections = pageInstance.data.sections;
+  for (var i = 0; i < sections.length; i++) {
+    let section = sections[i];
+    let fields = section.fields;
+    for (var k = 0; k < fields.length; k++) {
+      let field = fields[k];
+
+      if (field.required && !!!field.value) {
+        this.alert(field.label + '不能为空');
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 var callInterface = function (apiName, data, callbackWhenSuccess) {
   if (apiName == null || apiName == '') {
     alert('参数apiName取值为空');
@@ -170,5 +194,6 @@ module.exports = {
   setFieldValue: setFieldValue,
   getFieldValue: getFieldValue,
   callInterface: callInterface,
-  uploadFile: uploadFile
+  uploadFile: uploadFile,
+  checkField: checkField
 }
