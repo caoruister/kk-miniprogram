@@ -8,8 +8,15 @@ Page({
   },
   onLoad(options) {
     // console.log(options);
+    wx.navigateBack({
+      url: '/pages/webview/webview',
+    })
   },
   onShow() {
+    wx.navigateTo({
+      url: '/pages/webview/webview',
+    })
+
     var token = wx.getStorageSync('__token__');
     // if (token == null || token == '') {
     //   wx.redirectTo({

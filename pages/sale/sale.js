@@ -1,3 +1,7 @@
+
+var app = getApp();
+
+
 // pages/sale/sale.js
 var common = require('../../utils/common.js')
 const App = getApp()

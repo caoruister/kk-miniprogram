@@ -1,5 +1,11 @@
 //app.js
 App({
+  onHide() {
+    this.data.webShowed = false;
+  },
+  data: {
+    webShowed: false //标记web-view页面是否已经显示过了
+  },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

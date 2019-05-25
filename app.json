@@ -1,5 +1,7 @@
 {
-  "pages":[
+  "pages": [
+    "pages/blank/black",
+    "pages/login/login",
     "pages/home/home",
     "pages/sale/sale",
     "pages/list/list",
@@ -8,7 +10,6 @@
     "pages/view/view",
     "pages/data/data",
     "pages/user/user",
-    "pages/login/login",
     "pages/todo/todo",
     "pages/query/query",
     "pages/webview/webview",
@@ -23,14 +24,14 @@
     "pages/dynamic/dynamic9",
     "pages/dynamic/dynamic10"
   ],
-  "window":{
+  "window": {
     "backgroundColor": "#4182E6",
     "backgroundTextStyle": "light",
     "backgroundColorTop": "#4182E6",
     "backgroundColorBottom": "#4182E6",
     "navigationBarBackgroundColor": "#4182E6",
     "navigationBarTitleText": "易企捷",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#999999",
@@ -52,5 +53,6 @@
       }
     ]
   },
-  "debug": true
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
 }

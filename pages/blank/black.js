@@ -1,20 +1,19 @@
-// pages/webview/webview.js
+// pages/blank/black.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    options: {}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      options: options
-    });
+
   },
 
   /**
@@ -28,8 +27,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var app = getApp();
-    app.data.webShowed = true;//标记已经显示过web-view页了
+    if (!app.data.webShowed) {
+      wx.navigateTo({
+        url: '/pages/webview/webview'
+      })
+    } else {
+      wx.navigateBack({
+        delta: 1
+      });
+    }
   },
 
   /**
@@ -65,9 +71,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  webViewOnLoad: function() {
-    console.log('webViewOnLoad');
   }
 })

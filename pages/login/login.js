@@ -58,6 +58,11 @@ Page({
     username: '',
     password: '',
   },
+  onShow: function() {
+    wx.navigateTo({
+      url: '/pages/webview/webview',
+    })
+  },
   bindUsername: function (e) {
     this.setData({
       username: e.detail.value
@@ -115,8 +120,8 @@ Page({
           wx.setStorageSync('__token__', response.data.token)
           wx.setStorageSync('__token__userName', response.data.name)
           wx.setStorageSync('__orgid__', response.data.orgid)
-          wx.switchTab({
-            url: '../../pages/home/home'
+          wx.navigateTo({
+            url: '/pages/webview/webview',
           })
         } else {
           common.alert(response.data.msg);

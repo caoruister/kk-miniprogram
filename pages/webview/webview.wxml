@@ -1,2 +1,2 @@
 <!--pages/webview/webview.wxml-->
-<web-view src="https://h109208.kz-info.cn/"></web-view>
+<web-view src="https://h109208.kz-info.cn/" bindload="webViewOnLoad"></web-view>
